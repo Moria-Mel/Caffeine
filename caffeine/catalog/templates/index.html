@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Домашняя страница</h1>
+
+  <p>Тут что-то будет потом правда</p>
+
+<h2>Динамическая информация:</h2>
+
+  <p>У нас уже есть:</p>
+  <ul>
+    <li><strong>Пользователи:</strong> {{ num_users }}</li>
+    <li><strong>Статьи:</strong> {{ num_articles }}</li>
+  </ul>
+
+{% endblock %}
