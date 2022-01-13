@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser
+from .managers import CustomUserManager
+from django.contrib.auth.models import PermissionsMixin
 
 
 class QuestionsModel(models.Model):
@@ -17,24 +19,24 @@ class QuestionsModel(models.Model):
         return reverse('user-detail', args=[str(self.id)])
 
 
-class CustomUser(AbstractUser):
-    last_login = None
-    date_joined = None
-    is_active = None
-    is_staff = None
-    first_name = None
-    last_name = None
+class CustomUser(AbstractBaseUser, PermissionsMixin):
+    objects = CustomUserManager()
+    last_login = False
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=40, unique=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
     questions = models.BooleanField(null=True)
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email', 'password']
 
     class Meta:
         pass
 
     def __str__(self):
         return self.username
+
 
     def get_absolute_url(self):
         return reverse('user-detail', args=[str(self.id)])

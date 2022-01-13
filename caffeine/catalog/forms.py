@@ -1,20 +1,21 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
+from django.contrib.auth.hashers import make_password
 
 
 class CustomUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'password')
 
 
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'password')
 
 
 class CustomUserRegistrationForm(forms.ModelForm):
@@ -23,7 +24,7 @@ class CustomUserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'password')
 
     def clean_password2(self):
         cd = self.cleaned_data
