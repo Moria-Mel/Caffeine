@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Очень интересные вопросы!</h1>
+<form method="post" action="{% url 'questionary' %}">
+{% csrf_token %}
+    <h2>Часть {{ form.numb }}</h2>
+    <h2>{{ form.comment }}</h2>
+    <table>
+        {% for question in form %}
+            <tr>
+              <td><b>{{ question.label }}:</b></td>
+              <td>{{ question }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+<input type="submit" value="Дальше!" />
+
+</form>
+{{ req }}
+{{ data }}
+
+{% endblock %}

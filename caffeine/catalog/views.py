@@ -2,7 +2,8 @@ from django.shortcuts import render
 
 from .models import CustomUser, Article
 from django.views.generic.edit import FormView
-from .forms import CustomUserRegistrationForm
+from .forms import CustomUserRegistrationForm, Questionary1, Questionary2, Questionary3
+
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
@@ -43,3 +44,27 @@ def registration_view(request):
 
 })
 
+
+def statistic_view(request):
+    return render(request, 'statistic.html')
+
+
+def articles_view(request):
+    return render(request, 'articles.html')
+
+
+def questionary_view(request, data={}):
+    form = Questionary1()
+    req = None
+    if request.method == 'POST':
+        req = request.POST
+        if form.numb == 1:
+            data.update(req)
+            form = Questionary2()
+        elif form.numb == 2:
+            data.update(req)
+            form = Questionary3()
+        elif form.numb == 3:
+            data.update(req)
+
+    return render(request, 'questionary_base.html', context={'form': form, 'req': req, 'data': data})

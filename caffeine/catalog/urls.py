@@ -8,3 +8,6 @@ urlpatterns = [
 ]
 
 urlpatterns += [path('register/', views.registration_view, name="registration")]
+urlpatterns += [path('statistic/', views.statistic_view, name="statistic")]
+urlpatterns += [path('articles/', views.articles_view, name="articles")]
+urlpatterns += [path('questionary/', views.questionary_view, name="questionary")]
