@@ -3,6 +3,7 @@
 {% block content %}
 <h1>Очень интересные вопросы!</h1>
 <form method="post" action="{% url 'questionary' %}">
+    <div class="questionary">
 {% csrf_token %}
     <h2>Часть {{ form.numb }}</h2>
     <h2>{{ form.comment }}</h2>
@@ -14,8 +15,10 @@
             </tr>
         {% endfor %}
     </table>
-
-<input type="submit" value="Дальше!" />
+    </div>
+    <div class="button_field">
+        <input class="next_button" type="submit" value="Дальше!" />
+    </div>
 
 </form>
 {{ req }}
