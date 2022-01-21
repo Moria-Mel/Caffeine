@@ -3,3 +3,26 @@ sidebar-nav {
     padding: 0;
     list-style: none;
 }
+
+.my_class {font-style: bold;
+           text-align: center;
+           font-size: 60px;}
+
+.questionary {border-style: dotted;
+              border-color: #cacd58;
+              border-width: 7px;
+              margin: 15px;
+              padding: 15px;}
+
+.next_button {font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;}
+
+ .button_field { margin-left: 32px;
+
+ }
