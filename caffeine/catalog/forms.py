@@ -53,6 +53,8 @@ class Questionary1(Questionary):
 
 
 class Questionary2(Questionary):
+    numb = 2
+    comment = 'Какие из этих источников кофеина и с какой передичностью Вы используете?'
     default_choice = [('0', 'Почти никогда'), ('1', 'Единожды в месяц или реже'),
                                                 ('2', 'Несколько раз в месяц'), ('3', ' 2 - 3 раза в неделю'),
                                                 ('4', 'Ежедневно'), ('5', 'Несколько раз в день')]
@@ -63,14 +65,28 @@ class Questionary2(Questionary):
     energy_drinks = forms.ChoiceField(choices=default_choice, label='Энергетические напитки')
     pills = forms.ChoiceField(choices=default_choice, label='Кофеиносодержащие БАДы или медецинские препараты')
 
-    numb = 2
-    comment = 'Какие из этих источников кофеина и с какой передичностью Вы используете?'
-
 
 class Questionary3(Questionary):
-    default_choice = [('0', 'Никогда'), ('1', 'Иногда'), ('2', 'Часто'), ('3', 'Каждый день')]
+    numb = 3
+    default_choice1 = [('0', 'Никогда'), ('1', 'Иногда'), ('2', 'Часто'), ('3', 'Каждый день')]
+    default_choice2 = [('0', 'Нет'), ('1', 'В некотрой степени'), ('2', 'Да')]
 
-    addiction1 = forms.ChoiceField(label='Употребляете ли вы кофеин, чтобы лучше справиться с учебными или рабочими задачами?',
-                                   choices=default_choice)
-    addiction2 = forms.ChoiceField(label='Употребляете ли вы кофеин, чтобы проснуться утром?',
-                                   choices=default_choice)
+    addiction1 = forms.ChoiceField(label='Употребляете ли Вы кофеин, чтобы лучше справиться с учебными или рабочими задачами?',
+                                   choices=default_choice1)
+    addiction2 = forms.ChoiceField(label='Употребляете ли Вы кофеин, чтобы проснуться утром?',
+                                   choices=default_choice1)
+    addiction3 = forms.ChoiceField(label='Стало ли Вам необходимо употреблять большее количество кофеина, чем раньше, чтобы ощутить прилив сил?',
+                                   choices=default_choice2)
+
+    comment = 'Ответьте на вопросы об употреблении кофеина'
+
+
+class Questionary4(Questionary):
+    numb = 4
+    choice = [('1', 'Головная боль'), ('2', 'Упадок сил'), ('3', 'Снижение настроения'),
+              ('4', 'Трудности с концентрацией'), ('5', 'Раздражительность'), ('6', 'Сильная сноливость')]
+    symptoms = forms.MultipleChoiceField(
+        label='', widget=forms.CheckboxSelectMultiple,
+        choices=choice)
+
+    comment = 'Какие из перечисленных симптомов Вы замечали при отказе от употребления кофеина?'
