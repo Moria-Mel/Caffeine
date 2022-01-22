@@ -50,7 +50,9 @@ def statistic_view(request):
 
 
 def articles_view(request):
-    return render(request, 'articles.html')
+    num = Article.objects.all().count()
+    articles_list = [i.create_dict() for i in Article.objects.all()]
+    return render(request, 'articles.html', {'num': num, 'articles_list': articles_list})
 
 
 def questionary_view(request, data={'n': 1}):

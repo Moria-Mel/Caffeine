@@ -27,6 +27,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
     questions = models.BooleanField(null=True)
+    is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'password']
@@ -45,11 +46,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 class Article(models.Model):
     article_id = models.AutoField(primary_key=True)
     title = models.TextField()
-    summary = models.TextField()
-    links = models.TextField(null=True)
+    summary = models.TextField(null=True)
+    tags = models.TextField(null=True)
+    template = models.TextField(default='base_article')
 
     class Meta:
         pass
+
+    def create_dict(self):
+        return {'title': self.title, 'tags': [i.capitalize() for i in self.tags.split()],
+                'summary': self.summary}
 
     def __str__(self):
         return self.title
