@@ -55,7 +55,7 @@ class Article(models.Model):
 
     def create_dict(self):
         return {'title': self.title, 'tags': [i.capitalize() for i in self.tags.split()],
-                'summary': self.summary}
+                'summary': self.summary, 'id': self.article_id}
 
     def __str__(self):
         return self.title

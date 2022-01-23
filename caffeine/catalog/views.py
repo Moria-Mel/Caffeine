@@ -65,3 +65,11 @@ def questionary_view(request, data={'n': 1}):
             form = Questionary1
 
     return render(request, 'questionary_base.html', context={'form': form, 'req': req, 'data': data})
+
+
+def article_view(request, id):
+    try:
+        template = Article.objects.filter(article_id=id)[0].template
+    except:
+        template = 'article_error'
+    return  render(request, f'articles/{template}.html')
