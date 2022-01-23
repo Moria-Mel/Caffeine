@@ -12,3 +12,22 @@
 </div>
 {% endfor %}
 {% endblock %}
+
+{% block right-col %}
+<h2>Фильтры</h2>
+<form method="post" action="{% url 'articles' %}">
+{% csrf_token %}
+    <table>
+        {% for question in form %}
+            <tr>
+              <td>{{ question }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="button_field">
+        <input class="next_button" type="submit" value="Применить фильтры" />
+    </div>
+</form>
+    {{ req }}
+
+{% endblock %}

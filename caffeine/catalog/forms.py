@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Article
 from django.contrib.auth.hashers import make_password
 
 
@@ -31,6 +31,17 @@ class CustomUserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
+
+
+class Articles_filter(forms.Form):
+    tag_list = []
+    articles = Article.objects.all()
+    for i in articles:
+        for j in i.create_dict()['tags']:
+            if j not in tag_list:
+                tag_list.append(j)
+    filter_list = ((i, i) for i in tag_list)
+    filter_field = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=filter_list)
 
 
 class Questionary(forms.Form):

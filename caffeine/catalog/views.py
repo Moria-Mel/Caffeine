@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import CustomUser, Article
 from django.views.generic.edit import FormView
-from .forms import CustomUserRegistrationForm, Questionary1, Questionary2, Questionary3, Questionary4
+from .forms import CustomUserRegistrationForm, Questionary1, Questionary2, Questionary3, Questionary4, Articles_filter
 
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
@@ -48,7 +48,15 @@ def statistic_view(request):
 def articles_view(request):
     num = Article.objects.all().count()
     articles_list = [i.create_dict() for i in Article.objects.all()]
-    return render(request, 'articles.html', {'num': num, 'articles_list': articles_list})
+    form = Articles_filter()
+    if request.method == 'POST':
+        req = dict(request.POST)
+        if 'filter_field' in req.keys():
+            filters = req['filter_field']
+            articles_list = [i for i in articles_list if set(i['tags']).intersection(set(filters))]
+
+    return render(request, 'articles.html', {'num': num, 'articles_list': articles_list,
+                                             'form': form})
 
 
 def questionary_view(request, data={'n': 1}):
@@ -70,6 +78,6 @@ def questionary_view(request, data={'n': 1}):
 def article_view(request, id):
     try:
         template = Article.objects.filter(article_id=id)[0].template
-    except:
+    except KeyError:
         template = 'article_error'
-    return  render(request, f'articles/{template}.html')
+    return render(request, f'articles/{template}.html')
