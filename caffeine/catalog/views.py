@@ -56,25 +56,16 @@ def articles_view(request):
 
 
 def questionary_view(request, data={'n': 1}):
+    questionary_dict = {1: Questionary2(), 2: Questionary3(), 3: Questionary4(), 4: Questionary4()}
     req = None
     form = Questionary1()
     if request.method == 'POST':
         req = request.POST
-        if data['n'] == 1:
+        try:
             data.update(req)
-            data['n'] = 2
-            form = Questionary2()
-        elif data['n'] == 2:
-            data.update(req)
-            data['n'] = 3
-            form = Questionary3()
-        elif data['n'] == 3:
-            data.update(req)
-            data['n'] = 4
-            form = Questionary4()
-        elif data['n'] == 3:
-            data.update(req)
-            data['n'] = 4
-            form = Questionary4()
+            form = questionary_dict[data['n']]
+            data['n'] += 1
+        except KeyError:
+            form = Questionary1
 
     return render(request, 'questionary_base.html', context={'form': form, 'req': req, 'data': data})
