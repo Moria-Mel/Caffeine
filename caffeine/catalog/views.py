@@ -14,10 +14,6 @@ from django.views.generic import TemplateView
 
 
 def index(request):
-    """
-    Функция отображения для домашней страницы сайта.
-    """
-    # Генерация "количеств" некоторых главных объектов
     num_users = CustomUser.objects.all().count()
     num_articles = Article.objects.all().count()
 

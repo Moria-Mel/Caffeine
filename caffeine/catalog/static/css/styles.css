@@ -26,3 +26,9 @@ sidebar-nav {
  .button_field { margin-left: 32px;
 
  }
+
+.tag {border-radius: 20px;
+      background-color: #87cefa;
+      margin-right: 10px;
+      padding: 7px;
+}

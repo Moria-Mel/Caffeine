@@ -4,10 +4,10 @@
 <h1>В данный момент количество статей составляет {{ num }}</h1>
 {% for article in articles_list %}
 <div class="questionary">
-    <h3>{{article.title}}</h3>
+    <a href=""><h3>{{article.title}}</h3></a>
     <p>{{article.summary}}</p>
     {% for tag in article.tags %}
-    {{tag}}
+    <span class="tag">{{tag}}</span>
     {% endfor %}
 </div>
 {% endfor %}
