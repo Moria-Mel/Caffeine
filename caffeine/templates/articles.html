@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>В данный момент количество статей составляет {{ num }}</h1>
+<h1>{% if not filters %}Всего статей: {% else %} Количество статей содержащих {% for tag in filters %}<span class="tag">{{tag}}</span>{% endfor %}{% endif %}: {{ num }}</h1>
 {% for article in articles_list %}
 <div class="questionary">
     <a href={{article.id}}><h3>{{article.title}}</h3></a>

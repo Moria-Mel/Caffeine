@@ -29,6 +29,7 @@ sidebar-nav {
 
 .tag {border-radius: 20px;
       background-color: #87cefa;
-      margin-right: 10px;
+      margin-right: 8px;
       padding: 7px;
+      font-size: 17px;
 }

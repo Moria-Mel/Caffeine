@@ -49,14 +49,16 @@ def articles_view(request):
     num = Article.objects.all().count()
     articles_list = [i.create_dict() for i in Article.objects.all()]
     form = Articles_filter()
+    filters = None
     if request.method == 'POST':
         req = dict(request.POST)
         if 'filter_field' in req.keys():
             filters = req['filter_field']
             articles_list = [i for i in articles_list if set(i['tags']).intersection(set(filters))]
+            num = len(articles_list)
 
     return render(request, 'articles.html', {'num': num, 'articles_list': articles_list,
-                                             'form': form})
+                                             'form': form, 'filters': filters})
 
 
 def questionary_view(request, data={'n': 1}):
