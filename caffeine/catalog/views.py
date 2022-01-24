@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
-from .models import CustomUser, Article
+from .models import CustomUser, Article, QuestionsModel
 from django.views.generic.edit import FormView
 from .forms import CustomUserRegistrationForm, Questionary1, Questionary2, Questionary3, Questionary4, Articles_filter
 
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -61,18 +62,33 @@ def articles_view(request):
                                              'form': form, 'filters': filters})
 
 
+@login_required
 def questionary_view(request, data={'n': 1}):
     questionary_dict = {1: Questionary2(), 2: Questionary3(), 3: Questionary4(), 4: Questionary4()}
     req = None
     form = Questionary1()
     if request.method == 'POST':
         req = request.POST
-        try:
-            data.update(req)
-            form = questionary_dict[data['n']]
-            data['n'] += 1
-        except KeyError:
-            form = Questionary1
+        if data['n'] == 5:
+            questionary = QuestionsModel(user_id=request.user, gender=data['gender'][0],
+                                         age=int(data['age'][0]),
+                                         job=data['job'][0], instant_coffee=int(data['instant_coffee'][0]),
+                                         grain_coffee=int(data['grain_coffee'][0]), tea=int(data['tea'][0]),
+                                         energy_drinks=int(data['energy_drinks'][0]), pills=int(data['pills'][0]),
+                                         addiction1=int(data['addiction1'][0]),
+                                         addiction2=int(data['addiction2'][0]),
+                                         addiction3=int(data['addiction3'][0]),
+                                         symptoms=''.join([str(i) for i in data['symptoms']]))
+            questionary.save()
+            data = {}
+            data['n'] = 1
+        else:
+            try:
+                data.update(req)
+                form = questionary_dict[data['n']]
+                data['n'] += 1
+            except KeyError:
+                form = Questionary1()
 
     return render(request, 'questionary_base.html', context={'form': form, 'req': req, 'data': data})
 

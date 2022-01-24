@@ -66,9 +66,9 @@ class Questionary1(Questionary):
 class Questionary2(Questionary):
     numb = 2
     comment = 'Какие из этих источников кофеина и с какой передичностью Вы используете?'
-    default_choice = [('0', 'Почти никогда'), ('1', 'Единожды в месяц или реже'),
-                                                ('2', 'Несколько раз в месяц'), ('3', ' 2 - 3 раза в неделю'),
-                                                ('4', 'Ежедневно'), ('5', 'Несколько раз в день')]
+    default_choice = [(0, 'Почти никогда'), (1, 'Единожды в месяц или реже'),
+                                                (2, 'Несколько раз в месяц'), (3, ' 2 - 3 раза в неделю'),
+                                                (4, 'Ежедневно'), (5, 'Несколько раз в день')]
     instant_coffee = forms.ChoiceField(choices=default_choice,
                                        label='Растворимый кофе')
     grain_coffee = forms.ChoiceField(choices=default_choice, label='Зерновой кофе')
@@ -79,8 +79,8 @@ class Questionary2(Questionary):
 
 class Questionary3(Questionary):
     numb = 3
-    default_choice1 = [('0', 'Никогда'), ('1', 'Иногда'), ('2', 'Часто'), ('3', 'Каждый день')]
-    default_choice2 = [('0', 'Нет'), ('1', 'В некотрой степени'), ('2', 'Да')]
+    default_choice1 = [(0, 'Никогда'), (1, 'Иногда'), (2, 'Часто'), (3, 'Каждый день')]
+    default_choice2 = [(0, 'Нет'), (1, 'В некотрой степени'), (2, 'Да')]
 
     addiction1 = forms.ChoiceField(label='Употребляете ли Вы кофеин, чтобы лучше справиться с учебными или рабочими задачами?',
                                    choices=default_choice1)
@@ -94,8 +94,8 @@ class Questionary3(Questionary):
 
 class Questionary4(Questionary):
     numb = 4
-    choice = [('1', 'Головная боль'), ('2', 'Упадок сил'), ('3', 'Снижение настроения'),
-              ('4', 'Трудности с концентрацией'), ('5', 'Раздражительность'), ('6', 'Сильная сноливость')]
+    choice = [(1, 'Головная боль'), (2, 'Упадок сил'), (3, 'Снижение настроения'),
+              (4, 'Трудности с концентрацией'), (5, 'Раздражительность'), (6, 'Сильная сноливость')]
     symptoms = forms.MultipleChoiceField(
         label='', widget=forms.CheckboxSelectMultiple,
         choices=choice)
