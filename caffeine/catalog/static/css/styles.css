@@ -33,3 +33,13 @@ sidebar-nav {
       padding: 7px;
       font-size: 17px;
 }
+
+.diagram {border: 1px solid black;
+          margin: auto;}
+
+
+.jsdata {display: none;}
+
+
+.diagram_cont {margin: auto;
+               border: 5px solid black;}

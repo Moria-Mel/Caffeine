@@ -8,9 +8,6 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
-
-
-
 from django.views.generic import TemplateView
 
 
@@ -43,7 +40,8 @@ def registration_view(request):
 
 
 def statistic_view(request):
-    return render(request, 'statistic.html')
+    stat_data = [('male', 5), ('female', 7), ('Sc', 2), ('St', 1), ('T', 3), ('O', 5)]
+    return render(request, 'statistic.html', context={'stat_data': stat_data})
 
 
 def articles_view(request):

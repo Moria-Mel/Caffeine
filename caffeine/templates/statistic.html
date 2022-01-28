@@ -1,6 +1,20 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Статистика по несуществующим анкетам</h1>
+<div class="jsdata">
+    {% for elem in stat_data %}
+    <p id="{{ elem.0 }}">{{ elem.1 }}</p>
+    {% endfor %}
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div class="diagram_cont" align="center">
+    <canvas id="genderCanvas" class="diagram"></canvas>
+</div>
+<div class="diagram_cont" align="center">
+    <canvas id="jobCanvas" class="diagram"></canvas>
+</div>
+{% load static %}
+<script type="text/javascript" src="{% static 'scripts/statistic_v2.js' %}"></script>
+
 
 {% endblock %}
