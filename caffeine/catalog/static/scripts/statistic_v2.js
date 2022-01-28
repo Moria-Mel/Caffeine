@@ -12,7 +12,7 @@ function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle){
 }
 
 
-function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle, color ){
+function drawPieSlice(ctx, centerX, centerY, radius, startAngle, endAngle, color ){
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.moveTo(centerX,centerY);
@@ -30,6 +30,17 @@ function drawSquare(ctx, centerX, centerY, size, color){
     ctx.lineTo(centerX + size/2, centerY - size/2);
     ctx.lineTo(centerX - size/2, centerY - size/2);
     ctx.fill();
+}
+
+
+function drawRectangle(ctx, startX, startY, sizeX, sizeY, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(startX, startY - sizeY);
+    ctx.lineTo(startX + sizeX, startY - sizeY);
+    ctx.lineTo(startX + sizeX, startY);
+    ctx.fill()
 }
 
 
@@ -69,38 +80,114 @@ var Piechart = function(options){
             start_angle += slice_angle;
             color_index++;
         }
+        if (this.options.legend){
+                color_index = 0;
+                var legendHTML = "";
+                for (categ in this.options.data){
+                    legendHTML += "<div><span class='legend' style='display:inline-block;width:20px;background-color:"+this.colors[color_index++]+";'>&nbsp;</span> "+categ+"</div>";
+                }
+                this.options.legend.innerHTML = legendHTML;
+		}
 
     }
 }
 
+
+var Barchart = function(options){
+    this.options = options;
+    this.canvas = options.canvas;
+    this.ctx = this.canvas.getContext("2d");
+    this.color = options.color;
+    this.data = this.options.data;
+    this.max_value = options.max_value;
+    this.rect_width = options.rect_width;
+    this.rect_height = options.rect_height;
+    this.values_count = options.values_count;
+    this.space_width = options.space_width;
+    this.rect_count = Object.keys(this.data).length;
+    this.left_border = options.left_border;
+    this.bottom_border = options.bottom_border;
+
+
+
+    this.draw = function(){
+        var numb = 0;
+
+        for (let i = this.values_count; i >= 0; i--) {
+            drawRectangle(this.ctx, this.left_border, this.canvas.height - (-2 + this.rect_height / this.values_count * i) - this.bottom_border, this.canvas.width, 2, '#777777');
+
+            var labelText = i;
+			this.ctx.fillStyle = "#000000";
+			this.ctx.font = "15px Arial";
+			this.ctx.fillText(labelText, this.left_border - 15, this.canvas.height - (-2 + this.rect_height / this.values_count * i) - this.bottom_border);
+        }
+
+        for (categ in this.data){
+            val = this.options.data[categ];
+            drawRectangle(this.ctx, this.left_border * 1.5 + (this.space_width + this.rect_width) * numb, this.canvas.height - this.bottom_border,
+                          this.rect_width, this.rect_height / this.values_count * val, this.color);
+
+
+            numb++;
+        }
+        drawRectangle(this.ctx, this.left_border, this.canvas.height - this.bottom_border, this.canvas.width, 3, '#000000');
+        drawRectangle(this.ctx, this.left_border, this.canvas.height - this.bottom_border, 3, this.canvas.height, '#000000');
+
+
+    }
+
+}
+
+
 var genderData = {'Мужчины': getContextValue('male'), 'Женщины': getContextValue('female')};
 var jobData = {'Школники': getContextValue('Sc'), 'Студенты': getContextValue('St'),
  'Преподаватели': getContextValue('T'), 'Другие': getContextValue('O')};
-alert('!!');
-var myCanvas = [1, 2];
-var ctx = [1, 2];
-var myPiechart = [1, 2];
 
-function create_piechart(canvas_name, canvas_data, canvas_colors){
+var myCanvas = 0;
+var ctx = 0;
+var myPiechart = 0;
+var myLegend = 0;
+
+
+function create_piechart(canvas_name, canvas_data, canvas_colors, canvas_legend){
     myCanvas = document.getElementById(canvas_name);
-    myCanvas.width = 300;
-    myCanvas.height = 300;
+    myCanvas.width = 400;
+    myCanvas.height = 350;
     ctx = myCanvas.getContext('2d');
+    myLegend = document.getElementById(canvas_legend);
 
     myPiechart = new Piechart(
     {
         canvas:myCanvas,
         data:canvas_data,
-        colors: canvas_colors
+        colors: canvas_colors,
+        legend: myLegend
     });
     myPiechart.draw();
 }
 
+function create_barchart(canvas_name, canvas_data, color, max_value, rect_width, rect_height, values_count, space_width, left_border, bottom_border){
+    myCanvas = document.getElementById(canvas_name);
+    myCanvas.width = 600;
+    myCanvas.height = 600;
+    ctx = myCanvas.getContext('2d');
 
-create_piechart('genderCanvas', genderData, ["#00bfff","#ff526c", "#ffff00", "#00ff00"]);
-create_piechart('jobCanvas', jobData, ["#00bfff","#ff526c", "#ffff00", "#00ff00"]);
+    myBarchart = new Barchart(
+    {
+        canvas:myCanvas,
+        data: canvas_data,
+        color: color,
+        max_value: max_value,
+        rect_width: rect_width,
+        rect_height: rect_height,
+        values_count: values_count,
+        space_width: space_width,
+        left_border: left_border,
+        bottom_border: bottom_border
+    });
+    myBarchart.draw();
+}
 
-
-
-
-
+create_piechart('genderCanvas', genderData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'genderLegend');
+create_piechart('jobCanvas', jobData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'jobLegend');
+create_barchart('barCanvas', {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, '#fab73d', 9, 50, 550, 30, 35, 40)

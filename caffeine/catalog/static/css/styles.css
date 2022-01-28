@@ -35,11 +35,20 @@ sidebar-nav {
 }
 
 .diagram {border: 1px solid black;
-          margin: auto;}
+          }
 
 
 .jsdata {display: none;}
 
 
-.diagram_cont {margin: auto;
-               border: 5px solid black;}
+.diagram_cont {border: 5px solid black;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+}
+
+.legend_cont {display: inline-block;
+              text-align: left;
+              vertical-align: middle;}
+
+.legend {}
