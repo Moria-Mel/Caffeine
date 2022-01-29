@@ -86,12 +86,12 @@ sidebar-nav {
     text-indent: 25px;
     line-height: 30px;
 }
-dl {
+.dl_class {
     font-family: sans-serif;
     font-size: 20px;
     text-align: justify;
     margin-left: 90px;
-    margin-right: 90px;
+    margin-right: 50px;
     line-height: 30px;
 }
 .ol_class {
