@@ -40,7 +40,7 @@ class Articles_filter(forms.Form):
         for j in i.create_dict()['tags']:
             if j not in tag_list:
                 tag_list.append(j)
-    filter_list = ((i, i) for i in tag_list)
+    filter_list = [(i, i) for i in tag_list]
     filter_field = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=filter_list)
 
 
