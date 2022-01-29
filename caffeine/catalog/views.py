@@ -67,26 +67,28 @@ def questionary_view(request, data={'n': 1}):
     form = Questionary1()
     if request.method == 'POST':
         req = request.POST
+        try:
+            data.update(req)
+            form = questionary_dict[data['n']]
+            data['n'] += 1
+        except KeyError:
+            form = Questionary1()
         if data['n'] == 5:
             questionary = QuestionsModel(user_id=request.user, gender=data['gender'][0],
                                          age=int(data['age'][0]),
-                                         job=data['job'][0], instant_coffee=int(data['instant_coffee'][0]),
-                                         grain_coffee=int(data['grain_coffee'][0]), tea=int(data['tea'][0]),
-                                         energy_drinks=int(data['energy_drinks'][0]), pills=int(data['pills'][0]),
+                                         job=data['job'][0],
+                                         instant_coffee=int(data['instant_coffee'][0]),
+                                         grain_coffee=int(data['grain_coffee'][0]),
+                                         tea=int(data['tea'][0]),
+                                         energy_drinks=int(data['energy_drinks'][0]),
+                                         pills=int(data['pills'][0]),
                                          addiction1=int(data['addiction1'][0]),
                                          addiction2=int(data['addiction2'][0]),
                                          addiction3=int(data['addiction3'][0]),
                                          symptoms=''.join([str(i) for i in data['symptoms']]))
             questionary.save()
             data = {}
-            data['n'] = 1
-        else:
-            try:
-                data.update(req)
-                form = questionary_dict[data['n']]
-                data['n'] += 1
-            except KeyError:
-                form = Questionary1()
+            return redirect('questionary_congratulations')
 
     return render(request, 'questionary_base.html', context={'form': form, 'req': req, 'data': data})
 
@@ -97,3 +99,7 @@ def article_view(request, id):
     except KeyError:
         template = 'article_error'
     return render(request, f'articles/{template}.html')
+
+
+def questionary_congratulations_view(request):
+    return render(request, 'questionary_congratulations.html')
