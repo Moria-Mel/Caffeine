@@ -88,6 +88,19 @@ var Piechart = function(options){
                 }
                 this.options.legend.innerHTML = legendHTML;
 		}
+		if (this.options.doughnut){
+		    this.ctx.globalCompositeOperation = 'destination-out';
+		    drawPieSlice(
+				this.ctx,
+				this.canvas.width/2,
+				this.canvas.height/2,
+				this.options.doughnut * Math.min(this.canvas.width/2,this.canvas.height/2),
+				0,
+				2 * Math.PI,
+				"#ff0000"
+			);
+
+		}
 
     }
 }
@@ -149,7 +162,7 @@ var myPiechart = 0;
 var myLegend = 0;
 
 
-function create_piechart(canvas_name, canvas_data, canvas_colors, canvas_legend){
+function create_piechart(canvas_name, canvas_data, canvas_colors, canvas_legend, doughnut = 0){
     myCanvas = document.getElementById(canvas_name);
     myCanvas.width = 400;
     myCanvas.height = 350;
@@ -161,7 +174,8 @@ function create_piechart(canvas_name, canvas_data, canvas_colors, canvas_legend)
         canvas:myCanvas,
         data:canvas_data,
         colors: canvas_colors,
-        legend: myLegend
+        legend: myLegend,
+        doughnut: doughnut
     });
     myPiechart.draw();
 }
@@ -188,6 +202,6 @@ function create_barchart(canvas_name, canvas_data, color, max_value, rect_width,
     myBarchart.draw();
 }
 
-create_piechart('genderCanvas', genderData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'genderLegend');
-create_piechart('jobCanvas', jobData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'jobLegend');
-create_barchart('barCanvas', {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, '#fab73d', 9, 50, 550, 30, 35, 40)
+create_piechart('genderCanvas', genderData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'genderLegend', 0.5);
+create_piechart('jobCanvas', jobData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'jobLegend', 0.5);
+create_barchart('barCanvas', {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, '#fab73d', 8, 50, 550, 8, 30, 35, 40)
