@@ -7,7 +7,7 @@ from django.contrib.auth.models import PermissionsMixin
 
 class QuestionsModel(models.Model):
     questionary_id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey('catalog.customuser', on_delete=models.CASCADE, db_column='questions', blank=False, null=False)
+    user_questionary_id = models.ForeignKey('catalog.customuser', on_delete=models.CASCADE, db_column='questions', blank=False, null=False)
     gender = models.CharField(max_length=1, null=False)
     age = models.IntegerField(null=False)
     job = models.CharField(max_length=2, null=False)
