@@ -10,7 +10,7 @@ sidebar-nav {
 
 .questionary {
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 20px;
     border-color: #bebebe;
     border-width: 1px;
     background-color:#f8f8f8;
@@ -75,7 +75,7 @@ sidebar-nav {
 .h1_class {
     font-size: 50px;
     font-weight: 800;
-    font-family: sans-serif;
+    font-family: Verdana;
     text-align: center;
 }
 .h2_class {
@@ -119,4 +119,20 @@ sidebar-nav {
     margin-left: 90px;
     margin-right: 90px;
     line-height: 30px;
+}
+hr {
+    margin: 20px 0;
+	padding: 0;
+	height: 20px;
+	border: none;
+	background: linear-gradient(45deg, rgba(57, 42, 190, 0.473), rgba(170, 37, 141, 0.466));
+}
+.articles {
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #bebebe;
+    border-width: 1px;
+    background-color:#f8f8f8;
+    margin: 15px;
+    padding-bottom: 25px;
 }
