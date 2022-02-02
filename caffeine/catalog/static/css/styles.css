@@ -8,48 +8,66 @@ sidebar-nav {
            text-align: center;
            font-size: 60px;}
 
-.questionary {border-style: dotted;
-              border-color: #cacd58;
-              border-width: 7px;
-              margin: 15px;
-              padding: 15px;}
+.questionary {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #bebebe;
+    border-width: 1px;
+    background-color:#f8f8f8;
+    margin: 15px;
+    padding-left: 35px;
+    padding-bottom: 25px;
+}
 
-.next_button {font-weight: 700;
-  color: white;
-  text-decoration: none;
-  padding: .8em 1em calc(.8em + 3px);
-  border-radius: 3px;
-  background: rgb(64,199,129);
-  box-shadow: 0 -3px rgb(53,167,110) inset;
-  transition: 0.2s;}
+.next_button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-right: 50px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 3px;
+    color: #E8EFF1;
+    text-shadow: -2px -1px #F17555;
+    background: #be73e0;
+    transition: .3s;
+}
 
- .button_field { margin-left: 32px;
-
+ .button_field { 
+     margin-left: 0px;
+     margin-top: 15px;
  }
 
-.tag {border-radius: 20px;
-      background-color: #87cefa;
+.tag {
+      background-color: #bd73e091;
+      border-radius: 10px;
       margin-right: 8px;
       padding: 7px;
       font-size: 17px;
 }
 
-.diagram {border: 1px solid black;
-          }
+.diagram {
+    border: 1px solid black;
+}
 
 
 .jsdata {display: none;}
 
 
-.diagram_cont {border: 5px solid black;
-               display: flex;
-               justify-content: center;
-               align-items: center;
+.diagram_cont {
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.legend_cont {display: inline-block;
-              text-align: left;
-              vertical-align: middle;}
+.legend_cont {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
 
 .legend {}
 
