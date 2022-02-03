@@ -202,8 +202,8 @@ function create_barchart(canvas_name, canvas_data, color, max_value, rect_width,
     myBarchart.draw();
 }
 
-colors = ["#6c0aab","#9a3fd5", "#fddca5", "#bbc8ba"]
+colors = ["#9900FF","#663399", "#330066", "#CC99FF"]
 
 create_piechart('genderCanvas', genderData, colors, 'genderLegend', 0.5);
 create_piechart('jobCanvas', jobData, colors, 'jobLegend', 0.5);
-create_barchart('barCanvas', {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, '#fab73d', 8, 50, 550, 8, 30, 35, 40)
+create_barchart('barCanvas', {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, '#9900FF', 8, 50, 550, 8, 30, 35, 40)

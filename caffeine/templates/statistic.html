@@ -6,6 +6,8 @@
     <p id="{{ elem.0 }}">{{ elem.1 }}</p>
     {% endfor %}
 </div>
+
+<div class="articles">
 <h1 class="h1_class">Статистика результатов анкетирования</h1>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="diagram_cont" align="center">
@@ -21,6 +23,6 @@
 </div>
 {% load static %}
 <script type="text/javascript" src="{% static 'scripts/statistic_v2.js' %}"></script>
-
+</div>
 
 {% endblock %}
