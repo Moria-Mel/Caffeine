@@ -3,6 +3,37 @@ sidebar-nav {
     padding: 0;
     list-style: none;
 }
+.style {
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #bebebe;
+    border-width: 1px;
+    background-color:#f8f8f8;
+    margin: 15px;
+    padding: 25px;
+}
+.letters_sb {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: sans-serif;
+    margin-bottom: 5px;
+}
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: underline;
+    color: rgb(143, 6, 223);
+    cursor: pointer;
+}
+   color: rgb(143, 6, 223); 
+a:visited {
+    color: purple;
+    cursor: pointer;
+}
 
 .my_class {font-style: bold;
            text-align: center;

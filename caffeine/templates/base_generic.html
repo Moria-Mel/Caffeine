@@ -23,24 +23,26 @@
   ainer-fluid">
 
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-sm-3">
       {% block sidebar %}
-      <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Домашняя страница</a></li>
-          <li><a href="{% url 'statistic' %}">Статистика</a></li>
-          <li><a href="{% url 'articles' %}">Статьи</a></li>
-          <li><a href="{% url 'questionary' %}">Анкета</a></li>
+      <div class="style">
+      <dl>
+          <dd class="letters_sb" ><a href="{% url 'index' %}">Домашняя страница</a></dd>
+          <dd class="letters_sb"><a href="{% url 'statistic' %}">Статистика</a></dd>
+          <dd class="letters_sb"><a href="{% url 'articles' %}">Статьи</a></dd>
+          <dd class="letters_sb"><a href="{% url 'questionary' %}">Анкета</a></dd>
           {% if user.is_authenticated %}
-         <li>Пользователь: {{ user.get_username }}</li>
-         <li><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>
+         <dd class="letters_sb">Пользователь: {{ user.get_username }}</dd>
+         <dd class="letters_sb"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></d>
        {% else %}
-         <li><a href="{% url 'login'%}?next={{request.path}}">Вход</a></li>
-          <li><a href="{% url 'registration' %}">Регистрация</a></li>
+         <dd class="letters_sb"><a href="{% url 'login'%}?next={{request.path}}">Вход</a></dd>
+          <dd class="letters_sb"><a href="{% url 'registration' %}">Регистрация</a></dd>
        {% endif %}
-      </ul>
+      </dl>
+    </div>
      {% endblock %}
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-7">
       {% block content %}{% endblock %}
 
       </div>
