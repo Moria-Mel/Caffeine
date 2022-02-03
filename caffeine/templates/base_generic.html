@@ -33,7 +33,7 @@
           <dd class="letters_sb"><a href="{% url 'questionary' %}">Анкета</a></dd>
           {% if user.is_authenticated %}
          <dd class="letters_sb">Пользователь: {{ user.get_username }}</dd>
-         <dd class="letters_sb"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></d>
+         <dd class="letters_sb"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></dd>
        {% else %}
          <dd class="letters_sb"><a href="{% url 'login'%}?next={{request.path}}">Вход</a></dd>
           <dd class="letters_sb"><a href="{% url 'registration' %}">Регистрация</a></dd>

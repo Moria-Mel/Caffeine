@@ -34,11 +34,11 @@ class QuestionsModel(models.Model):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
     last_login = False
-    id = models.AutoField(primary_key=True)
+    user_id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=40, unique=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
-    questions = models.ForeignKey('catalog.questionsmodel', on_delete=models.CASCADE, db_column='user_id', blank=True, null=True)
+    user_questionary_id = models.ForeignKey('catalog.questionsmodel', on_delete=models.CASCADE, db_column='questions', blank=True, null=True)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'username'
