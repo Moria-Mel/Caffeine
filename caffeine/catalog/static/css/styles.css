@@ -75,7 +75,6 @@ a:hover {
 }
 
 .diagram {
-    border: 1px solid black;
 }
 
 
@@ -83,7 +82,6 @@ a:hover {
 
 
 .diagram_cont {
-    border: 5px solid black;
     display: flex;
     justify-content: center;
     align-items: center;

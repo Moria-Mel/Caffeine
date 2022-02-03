@@ -40,7 +40,14 @@ def registration_view(request):
 
 
 def statistic_view(request):
-    stat_data = [('male', 5), ('female', 7), ('Sc', 2), ('St', 1), ('T', 3), ('O', 5)]
+
+    def count_stat(column, value):
+        if column == 'gender':
+            return len(QuestionsModel.objects.filter(gender=value))
+        elif column == 'job':
+            return len(QuestionsModel.objects.filter(job=value))
+    n = count_stat(1, 1)
+    stat_data = [('male', 1), ('female', 1), ('Sc', 2), ('St', 1), ('T', 3), ('O', 5)]
     return render(request, 'statistic.html', context={'stat_data': stat_data})
 
 
