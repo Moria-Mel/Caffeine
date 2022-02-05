@@ -7,7 +7,7 @@ from django.contrib.auth.models import PermissionsMixin
 
 class QuestionsModel(models.Model):
     questionary_id = models.AutoField(primary_key=True)
-    user_questionary_id = models.ForeignKey('catalog.customuser', on_delete=models.CASCADE, db_column='questions', blank=False, null=False)
+    #user_id = models.ForeignKey('catalog.customuser', on_delete=models.CASCADE, db_column='questions', blank=False, null=False)
     gender = models.CharField(max_length=1, null=False)
     age = models.IntegerField(null=False)
     job = models.CharField(max_length=2, null=False)
@@ -34,11 +34,11 @@ class QuestionsModel(models.Model):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
     last_login = False
-    user_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=40, unique=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
-    user_questionary_id = models.ForeignKey('catalog.questionsmodel', on_delete=models.CASCADE, db_column='questions', blank=True, null=True)
+    #questions = models.ForeignKey('catalog.questionsmodel', on_delete=models.CASCADE, db_column='user_id', blank=True, null=True)
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'username'
@@ -66,7 +66,7 @@ class Article(models.Model):
         pass
 
     def create_dict(self):
-        return {'title': self.title, 'tags': [i.capitalize() for i in self.tags.split()],
+        return {'title': self.title, 'tags': [i.capitalize().replace('_', ' ') for i in self.tags.split()],
                 'summary': self.summary, 'id': self.article_id}
 
     def __str__(self):

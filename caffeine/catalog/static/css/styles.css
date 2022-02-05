@@ -12,6 +12,7 @@ sidebar-nav {
     margin: 15px;
     padding: 25px;
 }
+
 .letters_sb {
     font-weight: 700;
     font-size: 20px;
@@ -49,7 +50,7 @@ a:hover {
     position: relative;
     display: inline-block;
     padding: 10px 30px;
-    margin-right: 50px;
+    margin-right: 10px;
     text-decoration: none;
     font-family: sans-serif;
     font-size: 20px;
@@ -168,3 +169,21 @@ hr {
 table {
     width: 350px;
 }
+
+.container {display: flex;
+            flex-direction: row;
+            margin: 0px;
+            width: 100%;
+}
+
+.first-col {
+            width: 25%;
+            }
+
+.second-col {
+            width: 60%;
+            }
+
+.third-col {
+            width: 15%;
+            }
