@@ -18,30 +18,31 @@
 </head>
 
 <body>
+<div class="cont
+ ainer-fluid">
 
-  <div class="cont
-  ainer-fluid">
-
-    <div class="row">
-      <div class="col-sm-3">
-      {% block sidebar %}
+<div class="row">
+  <div class="col-sm-3">
+    {% block sidebar %}
       <div class="style">
-      <dl>
-          <dd class="letters_sb" ><a href="{% url 'index' %}">Домашняя страница</a></dd>
-          <dd class="letters_sb"><a href="{% url 'statistic' %}">Статистика</a></dd>
+        <table>
+          <dl>
+          <tr><th><img src="https://lh3.googleusercontent.com/4JYjOAgsYJgXWMrZhgHa5KEovzxXqTP2oKmtMeiGgL9QZg1_Vvbfy_E9FD5nD_Tl0NDoXkG6DW4EY0NdWzHPS38QtIBww_zfnSGQgy1WD0ZbcA-FV13Uge4dRru9F3zMf8B3k8GJqY9VJYYZdIwcNS7vC9qXcA2ZBK6u76BLlmv1LduEEMCZuYDE8yczfpaWx1cS_ZQBYiQbC3atxvBojQ2jcYt4DxsTIfGUDYNAMTbtIv3UjZK0Su7U6vx_En1U5SdZM0QL639hOxH_DGUvgsoYYHF8Y_QhAJwcipD_QZs03Ifb5hH3Tks50FmyouQTRsU71kC_icBZnKaVMkZrnqB_HfmzJvZ-1NsGQFtYnbGx1MT2dZvc851qcg0OqIGOHfRUwMn_mDzBJWrLDcmXWXlNyiSTF3egLN5lyqrdY1RLiDWZpWIgKLOzn10HJuadDzFixvTKgyGLWm_9iD7vTpjieOu4lpJuGqIoR1VJStEnMrFRn3b6T9KfI1y-KlBoEA0Ubmm1KM-g1qhom23RG7mYiD0C8RZJOj9yHWf7TgAU2mFojPHm_ExXGw8KEms0HM5HIS5d29_UzSEapfInMoUiOVO2t-s2sKm1rwiYdfmZkWuCwRkOz1QsxtD4s9OzYGrwl3D-EAfddasTnqrKuI2taGy1GnpiAeUWy9WORf9sa-TXwlLYDCLCSvrT1C0ZPauMyi3hCav5FhA5gT9Zav0=w296-h369-no?authuser=1" width="25" height="25"></th><th><dd class="letters_sb" ><a href="{% url 'index' %}">	&nbsp;Домашняя страница</a></dd></th></tr>
+          <tr><th><img src="https://lh3.googleusercontent.com/Qxm6_neaAsIjesAx8nVsCUdBZLKaBVR9-GuJIou8f71k98_SDvjEMdgtlcHYFU73OnHcGa_dcBfx9hWrGvIVSaYMKowvl1tvi4Op1KWaw9z_GHU5JuY1jezAOreyAF7E7zBjXeRRu9o417lqDylEHluPDQ8_jjrIlQx_zph3T_uIhh1inNIacoEBOjN645T99QvrWBzHAwJgwkD-Z-X2PWk1fc-8vHREPoJcJ2h7T_R3q6zhHpnKkgrEtjpPTaa6qlxA_OLj2aYuxbQSBv3qAr4zXiDc098By9zrzA9jbie9lCcQA3jKj_ybztat21yNMK6ZtP1Dg0zelj-zXXfqgcTy5-JvoflZpRRK3aqcVCk9XxC7OAA_rz7oLFFqY4ezUeMreS7rxbJrYwGWm4Gh3T6dIEi0AeIXSFDj81vz8WvWQmgMHiQc4VjcQtoYnvjpLkkB00iulsarZXAn1iWx_13s7CZ4-ndP4orzy4HlWe0QhBVBXt1oAyzOfsQaIykCTo1x5mfpYtvBAjefdrOtp5wBoHi9YO4xAyYuQ02sJw3_BVZ7Uv1woQ28C54_Os9NAvGo-tisLkA5MFzJUGZj8BSA8mQfcC_18epxo8F7sqZt98fvCktvJ7GrztIf46b84sT_7uTVsfnQOv_5T4eE6W3ZrImVbgLZgyylf4n075ezJ228k_7tQODuhD7-oTU42HY3V43-aqh9YC1255Ug8JE=w509-h229-no?authuser=1" width="25" height="25"></th><th><dd class="letters_sb"><a href="{% url 'statistic' %}">Статистика</a></dd></th></tr>
           <dd class="letters_sb"><a href="{% url 'articles' %}">Статьи</a></dd>
           <dd class="letters_sb"><a href="{% url 'questionary' %}">Анкета</a></dd>
           {% if user.is_authenticated %}
-         <dd class="letters_sb">Пользователь: {{ user.get_username }}</dd>
-         <dd class="letters_sb"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></dd>
-       {% else %}
-         <dd class="letters_sb"><a href="{% url 'login'%}?next={{request.path}}">Вход</a></dd>
+          <dd class="letters_sb">Пользователь: {{ user.get_username }}</dd>
+          <dd class="letters_sb"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></dd>
+          {% else %}
+          <dd class="letters_sb"><a href="{% url 'login'%}?next={{request.path}}">Вход</a></dd>
           <dd class="letters_sb"><a href="{% url 'registration' %}">Регистрация</a></dd>
        {% endif %}
-      </dl>
-    </div>
-     {% endblock %}
-      </div>
+          </dl>
+        </table>
+  </div>
+    {% endblock %}
+</div>
       <div class="col-sm-7">
       {% block content %}{% endblock %}
 

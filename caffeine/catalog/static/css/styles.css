@@ -165,3 +165,6 @@ hr {
 	height: auto;
 	display: block;
 }
+table {
+    width: 350px;
+}
