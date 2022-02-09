@@ -40,7 +40,26 @@ def registration_view(request):
 
 
 def statistic_view(request):
-    stat_data = [('male', 5), ('female', 7), ('Sc', 2), ('St', 1), ('T', 3), ('O', 5)]
+    questionaries = QuestionsModel.objects.all()
+
+    def get_stat(column, value):
+        if column == 'gender':
+            return len(questionaries.filter(gender=value))
+        elif column == 'job':
+            return len(questionaries.filter(job=value))
+        elif column == 'age':
+            pass
+        elif column == 'symptoms':
+            res = ''.join([i.symptoms for i in questionaries])
+            res = {int(i): res.count(i) for i in '123456'}
+            return res
+
+    stat_data = [('male', get_stat('gender', 'M')), ('female', get_stat('gender', 'F')), ('Sc', get_stat('job', 'Sc')),
+                 ('St',  get_stat('job', 'St')), ('T',  get_stat('job', 'T')), ('O',  get_stat('job', 'O'))]
+
+    stat1 = get_stat('symptoms', 0)
+    stat_data += [('symp' + str(i), stat1[i]) for i in stat1.keys()]
+    
     return render(request, 'statistic.html', context={'stat_data': stat_data})
 
 
@@ -68,7 +87,8 @@ def questionary_view(request, data={'n': 1}):
     if request.method == 'POST':
         req = request.POST
         if data['n'] == 5:
-            questionary = QuestionsModel(user_id=request.user, gender=data['gender'][0],
+            # user_id=request.user in QuestionsModel
+            questionary = QuestionsModel(gender=data['gender'][0],
                                          age=int(data['age'][0]),
                                          job=data['job'][0], instant_coffee=int(data['instant_coffee'][0]),
                                          grain_coffee=int(data['grain_coffee'][0]), tea=int(data['tea'][0]),
