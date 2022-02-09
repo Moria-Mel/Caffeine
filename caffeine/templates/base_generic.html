@@ -14,6 +14,7 @@
   <!-- Добавление дополнительного статического CSS файла -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   <link rel="stylesheet" href="{% static 'css/popupstyles.css' %}">
 
 </head>
 
@@ -22,16 +23,12 @@
 
   <div class="first-col">
     {% block sidebar %}
-      <div class="style">
-        <table>
-          <dl>
-          <tr><th><img src="../static/img/home.png" width="25" height="25"></th><th><dd class="letters_sb" ><a href="{% url 'index' %}">	&nbsp;Домашняя страница</a></dd></th></tr>
-          <tr><th><img src="../static/img/book.png" width="25" height="25"></th><th><dd class="letters_sb"><a href="{% url 'statistic' %}">Статистика</a></dd></th></tr>
-          <dd class="letters_sb"><a href="{% url 'articles' %}">Статьи</a></dd>
-          <dd class="letters_sb"><a href="{% url 'questionary' %}">Анкета</a></dd>
+      <div class="style container-col">
+          <div class="link1"><img class="icon" src="{% static 'img/home.png' %}"><a class="letters_sb" href="{% url 'index' %}">Главная</a></div>
+          <div class="link1"><img class="icon" src="{% static 'img/book.png' %}"><a class="letters_sb" href="{% url 'statistic' %}">Статистика</a></div>
+          <div class="link1"><a class="letters_sb" href="{% url 'articles' %}">Статьи</a></div>
+          <div class="link1"><a class="letters_sb" href="{% url 'questionary' %}">Анкета</a></div>
 
-          </dl>
-        </table>
   </div>
     {% endblock %}
 </div>
@@ -40,14 +37,14 @@
 
       </div>
       <div class="third-col">
-      {% block right-col %}<div class="style"> {% if user.is_authenticated %}
+      <div class="style"> {% if user.is_authenticated %}
           <dd class="letters_sb">Пользователь: {{ user.get_username }}</dd>
           <dd class="letters_sb"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></dd>
           {% else %}
           <dd class="letters_sb"><a href="{% url 'login'%}?next={{request.path}}">Вход</a></dd>
-          <dd class="letters_sb"><a href="{% url 'registration' %}">Регистрация</a></dd>{% endif %}{% endblock %}
+          <dd class="letters_sb"><a href="{% url 'registration' %}">Регистрация</a></dd>{% endif %}
 
-      </div></div>
+      </div><div class="style"> {% block right-col %}{% endblock %}</div></div>
 
   </div>
 </body>

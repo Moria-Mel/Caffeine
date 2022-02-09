@@ -155,6 +155,8 @@ var Barchart = function(options){
 var genderData = {'Мужчины': getContextValue('male'), 'Женщины': getContextValue('female')};
 var jobData = {'Школники': getContextValue('Sc'), 'Студенты': getContextValue('St'),
  'Преподаватели': getContextValue('T'), 'Другие': getContextValue('O')};
+var symptomsData = {1: getContextValue('symp1'), 2: getContextValue('symp2'), 3: getContextValue('symp3'),
+                    4: getContextValue('symp4'), 5: getContextValue('symp5'), 6: getContextValue('symp6')}
 
 var myCanvas = 0;
 var ctx = 0;
@@ -204,4 +206,9 @@ function create_barchart(canvas_name, canvas_data, color, max_value, rect_width,
 
 create_piechart('genderCanvas', genderData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'genderLegend', 0.5);
 create_piechart('jobCanvas', jobData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'jobLegend', 0.5);
-create_barchart('barCanvas', {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}, '#fab73d', 8, 50, 550, 8, 30, 35, 40)
+create_barchart('barCanvas', symptomsData, '#fab73d', 4, 50, 550, 4, 30, 35, 40)
+
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
