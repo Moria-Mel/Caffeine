@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div class="style">
 <form method="post">
 {% csrf_token %}
 <table>
@@ -31,5 +31,5 @@
 </form>
 
 <p><a href="{% url 'login' %}">Уже есть аккаунт?</a></p>
-
+</div>
 {% endblock %}
