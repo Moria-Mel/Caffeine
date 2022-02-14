@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import CustomUser, Article, QuestionsModel
 from django.views.generic.edit import FormView
-from .forms import CustomUserRegistrationForm, Questionary1, Questionary2, Questionary3, Questionary4, Articles_filter
+from .forms import CustomUserRegistrationForm, Questionary1, Questionary2, Questionary3, Questionary4, Questionary5, Articles_filter
 
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
@@ -48,7 +48,24 @@ def statistic_view(request):
         elif column == 'job':
             return len(questionaries.filter(job=value))
         elif column == 'age':
-            pass
+            res = [i.age for i in questionaries]
+            stat2 = {'15-': 0, '16-18': 0, '19-23': 0, '24-30': 0, '31-45': 0, '46-60': 0, '61+': 0}
+            for i in res:
+                if i <= 15:
+                    stat2['15-'] += 1
+                elif 16 <= i <= 18:
+                    stat2['16-18'] += 1
+                elif 19 <= i <= 23:
+                    stat2['19-23'] += 1
+                elif 24 <= i <= 30:
+                    stat2['24-30'] += 1
+                elif 31 <= i <= 45:
+                    stat2['31-45'] += 1
+                elif 46 <= i <= 60:
+                    stat2['46-60'] += 1
+                elif i >= 61:
+                    stat2['61+'] += 1
+            return stat2
         elif column == 'symptoms':
             res = ''.join([i.symptoms for i in questionaries])
             res = {int(i): res.count(i) for i in '123456'}
@@ -58,7 +75,9 @@ def statistic_view(request):
                  ('St',  get_stat('job', 'St')), ('T',  get_stat('job', 'T')), ('O',  get_stat('job', 'O'))]
 
     stat1 = get_stat('symptoms', 0)
+    age_stat = get_stat('age', 0)
     stat_data += [('symp' + str(i), stat1[i]) for i in stat1.keys()]
+    stat_data += [('age' + str(i), age_stat[i]) for i in age_stat.keys()]
     
     return render(request, 'statistic.html', context={'stat_data': stat_data})
 
@@ -81,7 +100,7 @@ def articles_view(request):
 
 @login_required
 def questionary_view(request, data={'n': 1}):
-    questionary_dict = {1: Questionary2(), 2: Questionary3(), 3: Questionary4(), 4: Questionary4()}
+    questionary_dict = {1: Questionary2(), 2: Questionary3(), 3: Questionary4(), 4: Questionary5()}
     req = None
     form = Questionary1()
     if request.method == 'POST':
@@ -105,6 +124,7 @@ def questionary_view(request, data={'n': 1}):
                 data.update(req)
                 form = questionary_dict[data['n']]
                 data['n'] += 1
+
             except KeyError:
                 form = Questionary1()
 

@@ -84,7 +84,7 @@ var Piechart = function(options){
                 color_index = 0;
                 var legendHTML = "";
                 for (categ in this.options.data){
-                    legendHTML += "<div><span class='legend' style='display:inline-block;width:20px;background-color:"+this.colors[color_index++]+";'>&nbsp;</span> "+categ+"</div>";
+                    legendHTML += "<div class='legend1_cont'><span class='legend' style='display:inline-block;background-color:"+this.colors[color_index++]+";'>&nbsp;</span> "+categ+"</div>";
                 }
                 this.options.legend.innerHTML = legendHTML;
 		}
@@ -156,7 +156,9 @@ var genderData = {'Мужчины': getContextValue('male'), 'Женщины': g
 var jobData = {'Школники': getContextValue('Sc'), 'Студенты': getContextValue('St'),
  'Преподаватели': getContextValue('T'), 'Другие': getContextValue('O')};
 var symptomsData = {1: getContextValue('symp1'), 2: getContextValue('symp2'), 3: getContextValue('symp3'),
-                    4: getContextValue('symp4'), 5: getContextValue('symp5'), 6: getContextValue('symp6')}
+                    4: getContextValue('symp4'), 5: getContextValue('symp5'), 6: getContextValue('symp6')};
+var ageData = {'15-': getContextValue('age15-'), '16-18': getContextValue('age16-18'), '19-23': getContextValue('age19-23'),
+ '24-30': getContextValue('age24-30'), '31-45': getContextValue('age31-45'), '46-60': getContextValue('age46-60'), '61+': getContextValue('age61+')};
 
 var myCanvas = 0;
 var ctx = 0;
@@ -166,8 +168,8 @@ var myLegend = 0;
 
 function create_piechart(canvas_name, canvas_data, canvas_colors, canvas_legend, doughnut = 0){
     myCanvas = document.getElementById(canvas_name);
-    myCanvas.width = 400;
-    myCanvas.height = 350;
+    myCanvas.width = 300;
+    myCanvas.height = 250;
     ctx = myCanvas.getContext('2d');
     myLegend = document.getElementById(canvas_legend);
 
@@ -206,6 +208,7 @@ function create_barchart(canvas_name, canvas_data, color, max_value, rect_width,
 
 create_piechart('genderCanvas', genderData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'genderLegend', 0.5);
 create_piechart('jobCanvas', jobData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'jobLegend', 0.5);
+create_piechart('ageCanvas', ageData, ["#546747","#fab73d", "#fddca5", "#c7c8ba", "#549747","#ffb7ed", "#f2dcf5", "#b9c8ba"], 'ageLegend', 0.5);
 create_barchart('barCanvas', symptomsData, '#fab73d', 4, 50, 550, 4, 30, 35, 40)
 
 function myFunction() {

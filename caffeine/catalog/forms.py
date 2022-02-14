@@ -101,3 +101,9 @@ class Questionary4(Questionary):
         choices=choice)
 
     comment = 'Какие из перечисленных симптомов Вы замечали при отказе от употребления кофеина?'
+
+
+class Questionary5(Questionary):
+    numb = 5
+
+    comment = 'Готовы завершить анкету?'
