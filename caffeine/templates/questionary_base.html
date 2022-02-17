@@ -1,13 +1,16 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Очень интересные вопросы!</h1>
+
+<div class="questionary">
+<h1 class="h1_questionary">Анкета по употреблению кофеина</h1>
+</div>
 <form method="post" action="{% url 'questionary' %}">
     <div class="questionary">
 {% csrf_token %}
-    <h2>Часть {{ form.numb }}</h2>
-    <h2>{{ form.comment }}</h2>
-    <table>
+    <h2 class="h2_questionary">Часть {{ form.numb }}</h2>
+    <h3 class="h3_questionary">{{ form.comment }}</h3>
+    <table class="table_class">
         {% for question in form %}
             <tr>
               <td><b>{{ question.label }}:</b></td>

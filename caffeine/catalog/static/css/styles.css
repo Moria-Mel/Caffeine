@@ -104,14 +104,24 @@ a:hover {
 .legend1_cont {font-size: 20px;
                font-family: sans-serif;
                font-style: italic;
-               font-weight: 400;}
-
-
+               font-weight: 400;
+}
 .h1_class {
     font-size: 50px;
     font-weight: 800;
     font-family: Verdana;
     text-align: center;
+}
+.h1_questionary {
+    font-size: 40px;
+    font-weight: 800;
+    font-family: Verdana;
+    text-align:left;
+}
+.h2_questionary {
+    font-weight: 700;
+    font-size: 25px;
+    font-family: sans-serif;
 }
 .h2_class {
     font-weight: 800;
@@ -120,6 +130,11 @@ a:hover {
     margin-top: 10px;
     margin-left: 50px;
     margin-right: 50px;
+}
+.h3_questionary {
+    font-weight: 600;
+    font-size: 20px;
+    font-family: sans-serif;
 }
 .h3_class {
     font-style: italic;
@@ -179,7 +194,9 @@ hr {
 table {
     width: 350px;
 }
-
+.table_class{
+    height: 100px;;
+}
 .container {display: flex;
             flex-direction: row;
             margin: 0px;
