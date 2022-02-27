@@ -206,10 +206,10 @@ function create_barchart(canvas_name, canvas_data, color, max_value, rect_width,
     myBarchart.draw();
 }
 
-create_piechart('genderCanvas', genderData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'genderLegend', 0.5);
-create_piechart('jobCanvas', jobData, ["#546747","#fab73d", "#fddca5", "#bbc8ba"], 'jobLegend', 0.5);
-create_piechart('ageCanvas', ageData, ["#546747","#fab73d", "#fddca5", "#c7c8ba", "#549747","#ffb7ed", "#f2dcf5", "#b9c8ba"], 'ageLegend', 0.5);
-create_barchart('barCanvas', symptomsData, '#fab73d', 4, 50, 550, 4, 30, 35, 40)
+create_piechart('genderCanvas', genderData, ["#9900FF","#330066", "#CC99FF", "#663399"], 'genderLegend', 0.5);
+create_piechart('jobCanvas', jobData, ["#9900CC","#330033", "#663366", "#9900FF"], 'jobLegend', 0.5);
+create_piechart('ageCanvas', ageData, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC","#663366", "#330033", "#CC99FF"], 'ageLegend', 0.5);
+create_barchart('barCanvas', symptomsData, '#9900FF', 4, 50, 550, 4, 30, 35, 40)
 
 function myFunction() {
     var popup = document.getElementById("myPopup");
