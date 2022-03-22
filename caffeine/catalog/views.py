@@ -100,35 +100,42 @@ def articles_view(request):
 
 @login_required
 def questionary_view(request, data={'n': 1}):
-    questionary_dict = {1: Questionary2(), 2: Questionary3(), 3: Questionary4(), 4: Questionary5()}
+    questionary_dict = {1: Questionary1(), 2: Questionary2(), 3: Questionary3(), 4: Questionary4(), 5: Questionary5(), 6: None}
     req = None
-    form = Questionary1()
+    form = form = questionary_dict[data['n']]
     if request.method == 'POST':
         req = request.POST
-        if data['n'] == 5:
-            # user_id=request.user in QuestionsModel
-            questionary = QuestionsModel(gender=data['gender'][0],
-                                         age=int(data['age'][0]),
-                                         job=data['job'][0], instant_coffee=int(data['instant_coffee'][0]),
-                                         grain_coffee=int(data['grain_coffee'][0]), tea=int(data['tea'][0]),
-                                         energy_drinks=int(data['energy_drinks'][0]), pills=int(data['pills'][0]),
-                                         addiction1=int(data['addiction1'][0]),
-                                         addiction2=int(data['addiction2'][0]),
-                                         addiction3=int(data['addiction3'][0]),
-                                         symptoms=''.join([str(i) for i in data['symptoms']]))
-            questionary.save()
-            data = {}
-            data['n'] = 1
-        else:
-            try:
-                data.update(req)
+        if req.get('next'):
+            data.update(req)
+            data['n'] += 1
+            if data['n'] == 6:
+                # user_id=request.user in QuestionsModel
+                questionary = QuestionsModel(gender=data['gender'][0],
+                                             age=int(data['age'][0]),
+                                             job=data['job'][0],
+                                             instant_coffee=int(data['instant_coffee'][0]),
+                                             grain_coffee=int(data['grain_coffee'][0]),
+                                             tea=int(data['tea'][0]),
+                                             energy_drinks=int(data['energy_drinks'][0]),
+                                             pills=int(data['pills'][0]),
+                                             addiction1=int(data['addiction1'][0]),
+                                             addiction2=int(data['addiction2'][0]),
+                                             addiction3=int(data['addiction3'][0]),
+                                             symptoms=''.join(
+                                                 [str(i) for i in data['symptoms']]))
+                questionary.save()
+                data = {}
+                data['n'] = 1
+                return render(request, 'thanks.html')
+            else:
                 form = questionary_dict[data['n']]
-                data['n'] += 1
+                del data['next']
 
-            except KeyError:
-                form = Questionary1()
+        elif req.get('back'):
+            data['n'] -= 1
+            form = questionary_dict[data['n']]
 
-    return render(request, 'questionary_base.html', context={'form': form, 'req': req, 'data': data})
+    return render(request, 'questionary_base.html', context={'form': form, 'req': req, 'data': data, 'back': data['n'] >= 2})
 
 
 def article_view(request, id):

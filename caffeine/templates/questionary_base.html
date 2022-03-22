@@ -20,7 +20,10 @@
     </table>
     </div>
     <div class="button_field">
-        <input class="next_button" type="submit" value="Дальше!" />
+        {% if back %}
+        <input name="back" class="next_button" type="submit" value="Назад" />
+        {% endif %}
+        <input name="next" class="next_button" type="submit" value="Дальше!" />
     </div>
 
 </form>

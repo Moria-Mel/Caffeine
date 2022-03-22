@@ -95,7 +95,7 @@ class Questionary3(Questionary):
 class Questionary4(Questionary):
     numb = 4
     choice = [(1, 'Головная боль'), (2, 'Упадок сил'), (3, 'Снижение настроения'),
-              (4, 'Трудности с концентрацией'), (5, 'Раздражительность'), (6, 'Сильная сноливость')]
+              (4, 'Трудности с концентрацией'), (5, 'Раздражительность'), (6, 'Сильная сноливость'), (7, 'Ничего из вышеперичисленного')]
     symptoms = forms.MultipleChoiceField(
         label='', widget=forms.CheckboxSelectMultiple,
         choices=choice)
