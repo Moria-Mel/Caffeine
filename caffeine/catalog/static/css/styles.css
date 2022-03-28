@@ -190,11 +190,10 @@ hr {
 	height: auto;
 	display: block;
 }
-table {
-    width: 350px;
-}
+
+
 .table_class{
-    height: 100px;;
+    height: 100px;
 }
 .container {display: flex;
             flex-direction: row;

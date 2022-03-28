@@ -13,7 +13,11 @@
     <table class="table_class">
         {% for question in form %}
             <tr>
-              <td><b>{{ question.label }}:</b></td>
+                {% if form.numb == 3 %}
+                    <td style="width: 500px"><b>{{ question.label }}:</b></td>
+                {% else %}
+                    <td><b>{{ question.label }}:</b></td>
+                {% endif %}
               <td>{{ question }}</td>
             </tr>
         {% endfor %}
