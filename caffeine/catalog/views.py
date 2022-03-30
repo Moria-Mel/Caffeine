@@ -100,7 +100,7 @@ def articles_view(request):
 
 @login_required
 def questionary_view(request, data={'n': 1}):
-    questionary_dict = {1: Questionary1(), 2: Questionary2(), 3: Questionary3(), 4: Questionary4(), 5: Questionary5(), 6: None}
+    questionary_dict = {0: None, 1: Questionary1(), 2: Questionary2(), 3: Questionary3(), 4: Questionary4(), 5: Questionary5(), 6: None}
     req = None
     form = form = questionary_dict[data['n']]
     if request.method == 'POST':
