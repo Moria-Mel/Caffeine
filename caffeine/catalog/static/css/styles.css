@@ -8,7 +8,7 @@ sidebar-nav {
     border-radius: 20px;
     border-color: #bebebe;
     border-width: 1px;
-    background-color:#f8f8f8;
+    background-color:#f8f8f89a;
     margin: 15px;
     padding: 25px;
 }
@@ -40,7 +40,7 @@ a:hover {
     border-radius: 20px;
     border-color: #bebebe;
     border-width: 1px;
-    background-color:#f8f8f8;
+    background-color:#f8f8f89a;
     margin: 15px;
     padding-left: 35px;
     padding-bottom: 25px;
@@ -74,8 +74,6 @@ a:hover {
       padding: 7px;
       font-size: 17px;
 }
-
-
 
 
 .jsdata {display: none;}
@@ -181,7 +179,7 @@ hr {
     border-radius: 20px;
     border-color: #bebebe;
     border-width: 1px;
-    background-color:#f8f8f8;
+    background-color:#f8f8f89a;
     margin: 15px;
     padding-bottom: 25px;
 }
@@ -196,6 +194,8 @@ hr {
     height: 100px;
 }
 .container {display: flex;
+            background-image: url(../img/background3.png);
+            
             flex-direction: row;
             margin: 0px;
             width: 100%;
@@ -223,3 +223,9 @@ hr {
 .icon {margin-right: 5px;
        width: 25px;
        height: 25px;}
+
+.reg_cont {width: fit-content;
+           margin-left: 200px;
+           margin-top: 300px;
+           margin-bottom: 200px;
+}
