@@ -111,7 +111,7 @@ var Barchart = function(options){
     this.canvas = options.canvas;
     this.ctx = this.canvas.getContext("2d");
     this.color = options.color;
-    this.data = this.options.data;
+    this.data = options.data;
     this.max_value = options.max_value;
     this.rect_width = options.rect_width;
     this.rect_height = options.rect_height;
@@ -139,6 +139,12 @@ var Barchart = function(options){
             val = this.options.data[categ];
             drawRectangle(this.ctx, this.left_border * 1.5 + (this.space_width + this.rect_width) * numb, this.canvas.height - this.bottom_border,
                           this.rect_width, this.rect_height / this.values_count * val, this.color);
+            var labelText1 = ['Головная', 'Упадок', 'Снижение', 'Трудности с', 'Раздражи-', 'Сильная'][categ - 1];
+            var labelText2 = ['боль', 'сил', 'настроения', 'вниманием', 'тельность', 'сонливость'][categ - 1];
+            this.ctx.fillStyle = "#000000";
+			this.ctx.font = "15px Arial";
+			this.ctx.fillText(labelText1, this.left_border * 1.5 + (this.space_width + this.rect_width) * numb, this.canvas.height - this.bottom_border + 20);
+			this.ctx.fillText(labelText2, this.left_border * 1.5 + (this.space_width + this.rect_width) * numb, this.canvas.height - this.bottom_border + 35);
 
 
             numb++;
@@ -159,6 +165,14 @@ var symptomsData = {1: getContextValue('symp1'), 2: getContextValue('symp2'), 3:
                     4: getContextValue('symp4'), 5: getContextValue('symp5'), 6: getContextValue('symp6')};
 var ageData = {'15-': getContextValue('age15-'), '16-18': getContextValue('age16-18'), '19-23': getContextValue('age19-23'),
  '24-30': getContextValue('age24-30'), '31-45': getContextValue('age31-45'), '46-60': getContextValue('age46-60'), '61+': getContextValue('age61+')};
+var caffe1Data = {'Почти никогда': getContextValue('caffe1_0'), 'Единожды в месяц или реже': getContextValue('caffe1_1'), 'Несколько раз в месяц': getContextValue('caffe1_2'), '2-3 раза в неделю': getContextValue('caffe1_3'), 'Ежедневно': getContextValue('caffe1_4'), 'Несколько раз в день': getContextValue('caffe1_5')};
+var caffe2Data = {'Почти никогда': getContextValue('caffe2_0'), 'Единожды в месяц или реже': getContextValue('caffe2_1'), 'Несколько раз в месяц': getContextValue('caffe2_2'), '2-3 раза в неделю': getContextValue('caffe2_3'), 'Ежедневно': getContextValue('caffe2_4'), 'Несколько раз в день': getContextValue('caffe2_5')};
+var teaData = {'Почти никогда': getContextValue('tea_0'), 'Единожды в месяц или реже': getContextValue('tea_1'), 'Несколько раз в месяц': getContextValue('tea_2'), '2-3 раза в неделю': getContextValue('tea_3'), 'Ежедневно': getContextValue('tea_4'), 'Несколько раз в день': getContextValue('tea_5')};
+var energydrinksData = {'Почти никогда': getContextValue('energydrinks_0'), 'Единожды в месяц или реже': getContextValue('energydrinks_1'), 'Несколько раз в месяц': getContextValue('energydrinks_2'), '2-3 раза в неделю': getContextValue('energydrinks_3'), 'Ежедневно': getContextValue('energydrinks_4'), 'Несколько раз в день': getContextValue('energydrinks_5')};
+var pillsData = {'Почти никогда': getContextValue('pills_0'), 'Единожды в месяц или реже': getContextValue('pills_1'), 'Несколько раз в месяц': getContextValue('pills_2'), '2-3 раза в неделю': getContextValue('pills_3'), 'Ежедневно': getContextValue('pills_4'), 'Несколько раз в день': getContextValue('pills_5')};
+var spec1Data = {'Никогда': getContextValue('spec1_0'), 'Иногда': getContextValue('spec1_1'), 'Часто': getContextValue('spec1_2'), 'Каждый день': getContextValue('spec1_3')};
+var spec2Data = {'Никогда': getContextValue('spec2_0'), 'Иногда': getContextValue('spec2_1'), 'Часто': getContextValue('spec2_2'), 'Каждый день': getContextValue('spec2_3')};
+var spec3Data = {'Нет': getContextValue('spec3_0'), 'В некоторой степени': getContextValue('spec3_1'), 'Да': getContextValue('spec3_2')};
 
 var myCanvas = 0;
 var ctx = 0;
@@ -206,10 +220,18 @@ function create_barchart(canvas_name, canvas_data, color, max_value, rect_width,
     myBarchart.draw();
 }
 
-create_piechart('genderCanvas', genderData, ["#9900FF","#330066", "#CC99FF", "#663399"], 'genderLegend', 0.5);
+create_piechart('genderCanvas', genderData, ["#9900FF", "#330066", "#CC99FF", "#663399"], 'genderLegend', 0.5);
 create_piechart('jobCanvas', jobData, ["#9900CC","#330033", "#663366", "#9900FF"], 'jobLegend', 0.5);
-create_piechart('ageCanvas', ageData, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC","#663366", "#330033", "#CC99FF"], 'ageLegend', 0.5);
-create_barchart('barCanvas', symptomsData, '#9900FF', 4, 50, 550, 4, 30, 35, 40)
+create_piechart('ageCanvas', ageData, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'ageLegend', 0.5);
+create_piechart('caffe1Canvas', caffe1Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'caffe1Legend', 0.5);
+create_piechart('caffe2Canvas', caffe2Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'caffe2Legend', 0.5);
+create_piechart('teaCanvas', teaData, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'teaLegend', 0.5);
+create_piechart('energydrinksCanvas', energydrinksData, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'energydrinksLegend', 0.5);
+create_piechart('pillsCanvas', pillsData, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'pillsLegend', 0.5);
+create_piechart('spec1Canvas', spec1Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'spec1Legend', 0.5);
+create_piechart('spec2Canvas', spec2Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'spec2Legend', 0.5);
+create_piechart('spec3Canvas', spec3Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'spec3Legend', 0.5);
+create_barchart('barCanvas', symptomsData, '#9900FF', 6, 50, 550, 6, 40, 35, 40);
 
 function myFunction() {
     var popup = document.getElementById("myPopup");
