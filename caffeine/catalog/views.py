@@ -47,6 +47,22 @@ def statistic_view(request):
             return len(questionaries.filter(gender=value))
         elif column == 'job':
             return len(questionaries.filter(job=value))
+        elif column == 'caffe1':
+            return len(questionaries.filter(instant_coffee=value))
+        elif column == 'caffe2':
+            return len(questionaries.filter(grain_coffee=value))
+        elif column == 'tea':
+            return len(questionaries.filter(tea=value))
+        elif column == 'energydrinks':
+            return len(questionaries.filter(energy_drinks=value))
+        elif column == 'pills':
+            return len(questionaries.filter(pills=value))
+        elif column == 'spec1':
+            return len(questionaries.filter(addiction1=value))
+        elif column == 'spec2':
+            return len(questionaries.filter(addiction2=value))
+        elif column == 'spec3':
+            return len(questionaries.filter(addiction3=value))
         elif column == 'age':
             res = [i.age for i in questionaries]
             stat2 = {'15-': 0, '16-18': 0, '19-23': 0, '24-30': 0, '31-45': 0, '46-60': 0, '61+': 0}
@@ -78,6 +94,14 @@ def statistic_view(request):
     age_stat = get_stat('age', 0)
     stat_data += [('symp' + str(i), stat1[i]) for i in stat1.keys()]
     stat_data += [('age' + str(i), age_stat[i]) for i in age_stat.keys()]
+    stat_data += [('caffe1_' + str(i), get_stat('caffe1', str(i))) for i in range(6)]
+    stat_data += [('caffe2_' + str(i), get_stat('caffe2', str(i))) for i in range(6)]
+    stat_data += [('tea_' + str(i), get_stat('tea', str(i))) for i in range(6)]
+    stat_data += [('energydrinks_' + str(i), get_stat('energydrinks', str(i))) for i in range(6)]
+    stat_data += [('pills_' + str(i), get_stat('pills', str(i))) for i in range(6)]
+    stat_data += [('spec1_' + str(i), get_stat('spec1', str(i))) for i in range(4)]
+    stat_data += [('spec2_' + str(i), get_stat('spec2', str(i))) for i in range(4)]
+    stat_data += [('spec3_' + str(i), get_stat('spec3', str(i))) for i in range(3)]
     
     return render(request, 'statistic.html', context={'stat_data': stat_data})
 
