@@ -127,13 +127,16 @@ var Barchart = function(options){
         var numb = 0;
 
         for (let i = this.values_count; i >= 0; i--) {
+            if (i % 10 == 0) {
             drawRectangle(this.ctx, this.left_border, this.canvas.height - (-2 + this.rect_height / this.values_count * i) - this.bottom_border, this.canvas.width, 2, '#777777');
 
-            var labelText = i;
+            var labelText = i + '%';
 			this.ctx.fillStyle = "#000000";
 			this.ctx.font = "15px Arial";
-			this.ctx.fillText(labelText, this.left_border - 15, this.canvas.height - (-2 + this.rect_height / this.values_count * i) - this.bottom_border);
-        }
+			var move = 0;
+			if (i == 100) {move = 40;} else {move = 30;}
+			this.ctx.fillText(labelText,  this.left_border - move, this.canvas.height - (-2 + this.rect_height / this.values_count * i) - this.bottom_border);
+        }}
 
         for (categ in this.data){
             val = this.options.data[categ];
@@ -231,7 +234,7 @@ create_piechart('pillsCanvas', pillsData, ["#9900FF","#663399", "#330066", "#CC9
 create_piechart('spec1Canvas', spec1Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'spec1Legend', 0.5);
 create_piechart('spec2Canvas', spec2Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'spec2Legend', 0.5);
 create_piechart('spec3Canvas', spec3Data, ["#9900FF","#663399", "#330066", "#CC99FF", "#9900CC", "#663366", "#330033", "#CC99FF"], 'spec3Legend', 0.5);
-create_barchart('barCanvas', symptomsData, '#9900FF', 6, 50, 550, 6, 40, 35, 40);
+create_barchart('barCanvas', symptomsData, '#9900FF', 100, 50, 550, 100, 40, 35, 40);
 
 function myFunction() {
     var popup = document.getElementById("myPopup");

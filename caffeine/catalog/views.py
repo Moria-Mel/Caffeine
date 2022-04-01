@@ -85,6 +85,8 @@ def statistic_view(request):
         elif column == 'symptoms':
             res = ''.join([i.symptoms for i in questionaries])
             res = {int(i): res.count(i) for i in '123456'}
+            count_quest = len(questionaries)
+            res = {i: res[i] / count_quest * 100 for i in res.keys()}
             return res
 
     stat_data = [('male', get_stat('gender', 'M')), ('female', get_stat('gender', 'F')), ('Sc', get_stat('job', 'Sc')),
