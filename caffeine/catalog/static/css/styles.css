@@ -214,39 +214,64 @@ hr {
 .container-col {
     display: flex;
     flex-direction: row;
-    margin: 0px;
     margin: 0;
     padding: 0;
     list-style: none;
-    justify-content: center;
-    align-items: center;
     letter-spacing: 0.04em;
 }
 
-menu {
+.menu_class {
     list-style: none;
+    justify-content: left;
 }
 
-menu li {
+.menu_li_class  {
     display: inline-block;
     padding: 0 25px;
     margin: 0 -2px;
 }
 
-menu li:hover {
+.menu_li_class:hover {
     background: #cbc1bb;
 }
 
-menu li a {
+.menu_li_class a {
     display: inline-block;
     height: 50px;
     color: #000;
 }
- menu li a:hover {
+.menu_li_class a:hover {
     color: #4a4a4a ;
     text-decoration: none;
     transition: 0,3s;
- }
+}
+
+/*Registration*/
+.reg_class {
+    list-style: none;
+    justify-content: right;
+}
+
+.reg_li_class  {
+    display: inline-block;
+    padding: 0 25px;
+    margin: 0 -2px;
+}
+
+.reg_li_class:hover {
+    background: #cbc1bb;
+}
+
+.reg_li_class a {
+    display: inline-block;
+    height: 50px;
+    color: #000;
+}
+.reg_li_class a:hover {
+    color: #4a4a4a ;
+    text-decoration: none;
+    transition: 0,3s;
+}
 
 .icon {
     margin-right: 5px;
