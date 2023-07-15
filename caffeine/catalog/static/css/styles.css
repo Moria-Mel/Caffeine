@@ -62,10 +62,10 @@ a:hover {
     transition: .3s;
 }
 
- .button_field { 
+.button_field { 
      margin-left: 0px;
      margin-top: 15px;
- }
+}
 
 .tag {
       background-color: #bd73e091;
@@ -201,25 +201,28 @@ hr {
 .table_class{
     height: 100px;
 }
-.container {display: flex;
-            margin: 0px;
-            width: 100%;
+.container {
+    display: flex;
+    margin: 0px;
+    width: 100%;
 }
 
 .first-col {
-            width: 15%;
-            }
+    width: 15%;
+}
 
 .second-col {
-            width: 65%;
-            }
+    width: 65%;
+}
 
 .third-col {
-            width: 20%;
-            }
+    width: 20%;
+}
 
-.link1 {display: flex;
-        flex-direction: row;}
+.link1 {
+    display: flex;
+    flex-direction: row;
+}
 
 .container-col {
     display: flex;
