@@ -261,3 +261,15 @@ menu li a {
     margin-top: 300px;
     margin-bottom: 200px;
 }
+
+/*naming*/
+
+.name {
+    text-decoration: none;
+    color: #000;
+}
+
+.name:hover {
+    text-decoration: none;
+    color:#4a4a4a
+}
