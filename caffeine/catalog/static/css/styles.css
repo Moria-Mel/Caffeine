@@ -202,9 +202,6 @@ hr {
     height: 100px;
 }
 .container {display: flex;
-            background-image: url(../img/background3.png);
-            
-            flex-direction: row;
             margin: 0px;
             width: 100%;
 }
