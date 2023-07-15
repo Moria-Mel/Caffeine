@@ -92,16 +92,18 @@ a:hover {
     vertical-align: middle;
 }
 
-.legend {width:30px;
-         height:30px;
-         font-size: 20px;
-         font-family: sans-serif;}
+.legend {
+    width:30px;
+    height:30px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
 
-
-.legend1_cont {font-size: 20px;
-               font-family: sans-serif;
-               font-style: italic;
-               font-weight: 400;
+.legend1_cont {
+    font-size: 20px;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: 400;
 }
 .h1_class {
     font-size: 50px;
@@ -196,7 +198,6 @@ hr {
 	height: auto;
 	display: block;
 }
-
 
 .table_class{
     height: 100px;
