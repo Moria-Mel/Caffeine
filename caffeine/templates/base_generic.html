@@ -20,28 +20,23 @@
 
 <body>
 <div class="container">
-
-  <div>
-    {% block sidebar %}
-      <div class="container-col">
+  {% block sidebar %}
+  <div class="container-col">
         <menu class="menu_class">
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'index' %}">Главная</a></li>
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'statistic' %}">Статистика</a></li>
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'articles' %}">Статьи</a></li>
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'questionary' %}">Анкета</a></li>
         </menu>
-      </div>
-      
-      <div>
+
         <menu class="reg_class">
           {% if user.is_authenticated %}
-          <li class="reg_li_class">Пользователь: {{ user.get_username }}</dd>
+          <li class="reg_li_class">Пользователь: {{ user.get_username }}<li>
           <li class="reg_li_class"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>
           {% else %}
           <li class="reg_li_class"><a class="letters_sb" href="{% url 'login'%}?next={{request.path}}">Вход</a></li>
           <li class="reg_li_class"><a class="letters_sb" href="{% url 'registration' %}">Регистрация</a></li>{% endif %}
         </menu>
-      </div>
       
 
   </div>
