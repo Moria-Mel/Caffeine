@@ -15,10 +15,10 @@
 
 <h2 class="h2_class">Динамическая информация:</h2>
 
-  <p class="body_class">У нас уже есть:</p>
-  <ul class="ol_class">
+  <p class="ol_class">У нас уже есть:</p>
+  <ul class="list_class ol_class">
     <li><strong>Пользователи:</strong> {{ num_users }}</li>
-    <li><strong><a href="{% url 'articles' %}">Статьи:</a></strong> {{ num_articles }}</li>
+    <li><strong><a class="name" href="{% url 'articles' %}">Статьи:</a></strong> {{ num_articles }}</li>
   </ul>
 </div>
 {% endblock %}

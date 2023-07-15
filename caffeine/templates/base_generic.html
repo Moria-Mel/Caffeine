@@ -30,12 +30,13 @@
           <li><a class="letters_sb" href="{% url 'articles' %}">Статьи</a></li>
           <li><a class="letters_sb" href="{% url 'questionary' %}">Анкета</a></li>
           {% if user.is_authenticated %}
+        </menu>
           <li>Пользователь: {{ user.get_username }}</dd>
           <li><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>
           {% else %}
           <li><a class="letters_sb" href="{% url 'login'%}?next={{request.path}}">Вход</a></li>
           <li><a class="letters_sb" href="{% url 'registration' %}">Регистрация</a></li>{% endif %}
-        </menu>
+        
       </div>
 
   </div>

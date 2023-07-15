@@ -5,7 +5,7 @@
 <h3 class="h3_class">{% if not filters %}Всего статей{% else %} Количество статей содержащих {% for tag in filters %}<span class="tag">{{tag}}</span>{% endfor %}{% endif %}: {{ num }}</h3>
 {% for article in articles_list %}
 <div class="questionary">
-    <a href={{article.id}}><h3>{{article.title}}</h3></a>
+    <a class="name" href={{article.id}}><h3>{{article.title}}</h3></a>
     <p>{{article.summary}}</p>
     {% for tag in article.tags %}
     <span class="tag">{{tag}}</span>
