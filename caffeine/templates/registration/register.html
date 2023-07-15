@@ -1,9 +1,10 @@
 {% extends "base_generic.html" %}
-
 {% block content %}
+<div class="main_reg_cont">
 <div class="style reg_cont">
 <form method="post">
 {% csrf_token %}
+<h2>Регистрация</h2> <!-- Добавь класс с дизайном -->
 <table>
 
 <tr>
@@ -12,17 +13,17 @@
 </tr>
 
 <tr>
-  <td><b>Электронная почта:</b></td>
+  <td><b class="body_class">Электронная почта:</b></td>
   <td>{{ form.email }}</td>
 </tr>
 
 <tr>
-  <td><b>Пароль:</b></td>
+  <td><b class="body_class">Пароль:</b></td>
   <td>{{ form.password }}</td>
 </tr>
 
 <tr>
-  <td><b>Пароль ещё раз:</b></td>
+  <td><b class="body_class">Пароль ещё раз:</b></td>
   <td>{{ form.password2 }}</td>
 </tr>
 </table>
@@ -31,5 +32,6 @@
 </form>
 
 <p><a href="{% url 'login' %}">Уже есть аккаунт?</a></p>
+</div>
 </div>
 {% endblock %}
