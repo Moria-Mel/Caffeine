@@ -204,6 +204,7 @@ hr {
 }
 .container {
     display: flex;
+    flex-direction: column;
     margin: 0px;
     width: 100%;
 }
@@ -227,7 +228,7 @@ hr {
 
 .container-col {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0px;
 }
 
