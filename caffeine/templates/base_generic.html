@@ -24,17 +24,18 @@
   <div>
     {% block sidebar %}
       <div class="style container-col">
-          <div class="link1"><img class="icon" src="{% static 'img/home.png' %}"><a class="letters_sb" href="{% url 'index' %}">Главная</a></div>
-          <div class="link1"><img class="icon" src="{% static 'img/stat.png' %}"><a class="letters_sb" href="{% url 'statistic' %}">Статистика</a></div>
-          <div class="link1"><img class="icon" src="{% static 'img/book.png' %}"><a class="letters_sb" href="{% url 'articles' %}">Статьи</a></div>
-          <div class="link1"><img class="icon" src="{% static 'img/anketa.png' %}"><a class="letters_sb" href="{% url 'questionary' %}">Анкета</a></div>
+        <menu>
+          <li><a class="letters_sb" href="{% url 'index' %}">Главная</a></li>
+          <li><a class="letters_sb" href="{% url 'statistic' %}">Статистика</a></li>
+          <li><a class="letters_sb" href="{% url 'articles' %}">Статьи</a></li>
+          <li><a class="letters_sb" href="{% url 'questionary' %}">Анкета</a></li>
           {% if user.is_authenticated %}
-          <dd class="letters_sb">Пользователь: {{ user.get_username }}</dd>
-          <dd class="letters_sb"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></dd>
+          <li>Пользователь: {{ user.get_username }}</dd>
+          <li><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>
           {% else %}
-          <dd class="letters_sb"><a href="{% url 'login'%}?next={{request.path}}">Вход</a></dd>
-          <dd class="letters_sb"><a href="{% url 'registration' %}">Регистрация</a></dd>{% endif %}
-
+          <li><a class="letters_sb" href="{% url 'login'%}?next={{request.path}}">Вход</a></li>
+          <li><a class="letters_sb" href="{% url 'registration' %}">Регистрация</a></li>{% endif %}
+        </menu>
       </div>
 
   </div>
