@@ -5,6 +5,7 @@
 
 <div class="main_reg_cont">
 <div class="style reg_cont">
+  <div class="small_reg_cont">
   <h2 class="letters_sb">Вход</h2>
 {% if form.errors %}
   <p>Что-то не так!</p>
@@ -14,25 +15,21 @@
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
-<table>
 
-<tr class="r">
-  <td><b class="body_class">Имя пользователя:</b></td>
-  <td>{{ form.username }}</td>
-</tr>
+  <!-- <b class="body_class">Имя пользователя:</b> -->
+  {{ form.username }}
+  <br>
+  <!-- <b class="body_class">Пароль:</b> -->
+  {{ form.password }}
 
-<tr>
-  <td><b class="body_class">Пароль:</b></td>
-  <td>{{ form.password }}</td>
-</tr>
-</table>
-
+  <br>
 <input class="testbutton" type="submit" value="Войти" />
 <input type="hidden" name="next" value="{{ next }}" />
 
 </form>
 
 <p class="k"><a class="name" href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+  </div>
   </div>
   </div>
 {% endblock %}
