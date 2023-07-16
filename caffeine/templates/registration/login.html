@@ -1,8 +1,7 @@
 {% extends "base_generic.html" %}
+
 {% block content %}
-<div class="main_reg_cont">
-<div class="style reg_cont">
-  <h2 class="log__class">Вход</h2>
+<div class="style">
 {% if form.errors %}
   <p>Что-то не так!</p>
 {% endif %}
@@ -11,25 +10,24 @@
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
-<table class="pad__class">
+<table>
 
 <tr>
-  <td><b class="body_class">Имя пользователя:</b></td>
+  <td><b>Имя пользователя:</b></td>
   <td>{{ form.username }}</td>
 </tr>
 
 <tr>
-  <td><b class="body_class">Пароль:</b></td>
+  <td><b>Пароль:</b></td>
   <td>{{ form.password }}</td>
 </tr>
 </table>
 
-<input class="testbutton" type="submit" value="Войти" />
+<input type="submit" value="Войти" />
 <input type="hidden" name="next" value="{{ next }}" />
 
 </form>
 
-<p class="k"><a class="name" href="{% url 'password_reset' %}">Забыли пароль?</a></p>
-  </div>
-  </div>
+<p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+</div>
 {% endblock %}

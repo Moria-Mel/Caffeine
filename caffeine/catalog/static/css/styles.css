@@ -196,14 +196,17 @@ hr {
     flex-direction: column;
     margin: 0px;
     width: 100%;
+    justify-content: center;
 }
+
+
 
 .first-col {
     width: 15%;
 }
 
 .second-col {
-    width: 65%;
+    width: 80%;
 }
 
 .third-col {
