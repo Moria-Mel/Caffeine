@@ -3,6 +3,8 @@
 {% block content %}
 <h1 class="h1_class">Наши статьи</h1>
 <h3 class="h3_class">{% if not filters %}Всего статей{% else %} Количество статей содержащих {% for tag in filters %}<span class="tag">{{tag}}</span>{% endfor %}{% endif %}: {{ num }}</h3>
+<div class="articles_container">
+    <div class="articles_block">
 {% for article in articles_list %}
 <div class="questionary">
     <a class="name" href={{article.id}}><h3>{{article.title}}</h3></a>
@@ -12,9 +14,10 @@
     {% endfor %}
 </div>
 {% endfor %}
-{% endblock %}
+        </div>
 
-{% block right-col %}
+
+    <div class="style filters_block">
 <h2>Фильтры</h2>
 <form method="post" action="{% url 'articles' %}">
 {% csrf_token %}
@@ -30,5 +33,7 @@
     </div>
 </form>
     {{ req }}
+        </div>
 
+    </div>
 {% endblock %}

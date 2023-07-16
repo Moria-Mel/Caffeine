@@ -31,8 +31,8 @@
 
         <menu class="reg_class">
           {% if user.is_authenticated %}
-          <li class="reg_li_class">Пользователь: {{ user.get_username }}<li>
-          <li class="reg_li_class"><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>
+          <li class="reg_li_class letters_sb">Пользователь: {{ user.get_username }}<li>
+          <li class="reg_li_class"><a class="letters_sb" href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>
           {% else %}
           <li class="reg_li_class"><a class="letters_sb" href="{% url 'login'%}?next={{request.path}}">Вход</a></li>
           <li class="reg_li_class"><a class="letters_sb" href="{% url 'registration' %}">Регистрация</a></li>{% endif %}
@@ -42,13 +42,11 @@
   </div>
     {% endblock %}
 </div>
-      <div>
       {% block content %}{% endblock %}
-
-      </div>
+<!--
       <div>
-      <div class="style"> {% block right-col %}{% endblock %}</div></div>
+      <div class="style filters_block"> {% block right-col %}{% endblock %}</div></div>
 
-  </div>
+  </div> -->
 </body>
 </html>
