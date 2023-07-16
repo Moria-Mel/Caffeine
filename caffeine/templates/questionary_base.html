@@ -4,11 +4,11 @@
 
 <hr>
 
-<div class="questionary">
+
 <h1 class="h1_questionary">Анкета по употреблению кофеина</h1>
-</div>
+
 <form method="post" action="{% url 'questionary' %}">
-    <div class="questionary">
+    <div class="style">
 {% csrf_token %}
     <h2 class="h2_questionary">Часть {{ form.numb }}</h2>
     <h3 class="h3_questionary">{{ form.comment }}</h3>
@@ -27,9 +27,9 @@
     </div>
     <div class="button_field">
         {% if back %}
-        <input name="back" class="next_button" type="submit" value="Назад" />
+        <input name="back" class="testbutton" type="submit" value="Назад" />
         {% endif %}
-        <input name="next" class="next_button" type="submit" value="Дальше!" />
+        <input name="next" class="testbutton" type="submit" value="Дальше!" />
     </div>
 
 </form>
