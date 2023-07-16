@@ -140,8 +140,9 @@ hr {
 	padding: 0;
 	height: 10px;
 	border: none;
-    width: 100vw;
 	background: linear-gradient(45deg, rgba(57, 42, 190, 0.473), rgba(170, 37, 141, 0.466));
+	margin-left: -1%;
+	margin-right: -1%;
 }
 .articles {
     border-radius: 10px;
