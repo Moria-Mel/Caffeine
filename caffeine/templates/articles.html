@@ -24,6 +24,7 @@
 <h2>Фильтры</h2>
 <form method="post" action="{% url 'articles' %}">
 {% csrf_token %}
+<div>
     <table>
         {% for question in form %}
             <tr>
@@ -31,6 +32,8 @@
             </tr>
         {% endfor %}
     </table>
+</div>
+
     <div class="button_field">
         <input class="testbutton" type="submit" value="Применить" />
     </div>

@@ -370,4 +370,6 @@ hr {
     font-size: 190%;
     line-height: 180%;
     text-align: justify;
+    list-style-type: none;
 }
+/*checkbox*/
