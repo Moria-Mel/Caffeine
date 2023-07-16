@@ -4,11 +4,8 @@ sidebar-nav {
     list-style: none;
 }
 .style {
-    border-style: solid;
-    border-radius: 20px;
-    border-color: #bebebe;
-    border-width: 1px;
-    background-color:#f8f8f89a;
+    border-radius: 2px;
+    background-color:#c6c6c645;
     margin: 15px;
     padding: 25px;
 }
@@ -16,7 +13,7 @@ sidebar-nav {
 .letters_sb {
     font-weight: 1000;
     font-size: 200%;
-    font: small-caps;
+    margin-bottom: none;
 }
 
 .my_class {font-style: bold;
@@ -121,13 +118,11 @@ sidebar-nav {
 
 /*Login and registration*/
 .body_class {
-    font-weight: lighter;
-    font-family: sans-serif;
-    font-size: 150%;
+    font-weight: bold;
+    font: sans-serif;
+    font-size: 190%;
+    line-height: 180%;
     text-align: justify;
-    margin-right: 50px;
-    text-indent: 25px;
-    padding-top: 10%px;
 }
 
 .dl_class {
@@ -138,14 +133,6 @@ sidebar-nav {
     margin-right: 50px;
     line-height: 30px;
 }
-.ol_class {
-    font-family: sans-serif;
-    font-size: 150%;
-    text-align: justify;
-    margin-left: 90px;
-    margin-right: 90px;
-    line-height: 30px;
-}
 
 /*полоска в статье*/
 hr {
@@ -153,6 +140,7 @@ hr {
 	padding: 0;
 	height: 10px;
 	border: none;
+    width: 100vw;
 	background: linear-gradient(45deg, rgba(57, 42, 190, 0.473), rgba(170, 37, 141, 0.466));
 }
 .articles {
@@ -313,6 +301,13 @@ hr {
     list-style-type: none;
 }
 
+.ol_class {
+    font-family: sans-serif;
+    font-size: 150%;
+    text-align: justify;
+    list-style-type: none;
+}
+
 /*Login and registration*/
 .log__class {
     font-weight: bold;
@@ -346,9 +341,16 @@ hr {
 
   /*отодвигальщики сврху и слева*/
 .k {
-    margin-top: 5%;
+    margin-top: 2%;
+}
+
+.r {
+    margin-left: 5%;
 }
 
 .l {
     margin-left: 2%;
+}
+.d {
+    margin-right: 2%;
 }

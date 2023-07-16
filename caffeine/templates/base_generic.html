@@ -22,14 +22,14 @@
 <div class="container">
   {% block sidebar %}
   <div class="container-col">
-        <menu class="menu_class">
+        <menu class="k menu_class">
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'index' %}">Главная</a></li>
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'statistic' %}">Статистика</a></li>
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'articles' %}">Статьи</a></li>
           <li class="menu_li_class"><a class="letters_sb" href="{% url 'questionary' %}">Анкета</a></li>
         </menu>
 
-        <menu class="reg_class">
+        <menu class="k reg_class">
           {% if user.is_authenticated %}
           <li class="reg_li_class letters_sb">Пользователь: {{ user.get_username }}<li>
           <li class="reg_li_class"><a class="letters_sb" href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>

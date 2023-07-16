@@ -1,8 +1,11 @@
 {% extends "base_generic.html" %}
 {% block content %}
+
+<hr>
+
 <div class="main_reg_cont">
 <div class="style reg_cont">
-  <h2>Вход</h2>
+  <h2 class="letters_sb">Вход</h2>
 {% if form.errors %}
   <p>Что-то не так!</p>
 {% endif %}
@@ -13,7 +16,7 @@
 
 <table>
 
-<tr>
+<tr class="r">
   <td><b class="body_class">Имя пользователя:</b></td>
   <td>{{ form.username }}</td>
 </tr>
@@ -24,12 +27,12 @@
 </tr>
 </table>
 
-<input type="submit" value="Войти" />
+<input class="testbutton" type="submit" value="Войти" />
 <input type="hidden" name="next" value="{{ next }}" />
 
 </form>
 
-<p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+<p class="k"><a class="name" href="{% url 'password_reset' %}">Забыли пароль?</a></p>
   </div>
   </div>
 {% endblock %}

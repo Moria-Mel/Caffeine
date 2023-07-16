@@ -1,6 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+
+<hr>
+
 <div class="jsdata">
     {% for elem in stat_data %}
     <p id="{{ elem.0 }}">{{ elem.1 }}</p>

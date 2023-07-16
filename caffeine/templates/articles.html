@@ -1,13 +1,16 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+
+<hr>
+
 <h1 class="h1_class">Наши статьи</h1>
-<h3 class="h3_class">{% if not filters %}Всего статей{% else %} Количество статей содержащих {% for tag in filters %}<span class="tag">{{tag}}</span>{% endfor %}{% endif %}: {{ num }}</h3>
+<h3 class="r letters_sb">{% if not filters %}Всего статей{% else %} Количество статей содержащих {% for tag in filters %}<span class="tag">{{tag}}</span>{% endfor %}{% endif %}: {{ num }}</h3>
 <div class="articles_container">
     <div class="articles_block">
 {% for article in articles_list %}
-<div class="questionary">
-    <a class="name" href={{article.id}}><h3>{{article.title}}</h3></a>
+<div class="style">
+    <a class="name" href={{article.id}}><h3 class="body_class">{{article.title}}</h3></a>
     <p>{{article.summary}}</p>
     {% for tag in article.tags %}
     <span class="tag">{{tag}}</span>

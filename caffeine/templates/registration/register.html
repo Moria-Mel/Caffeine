@@ -1,10 +1,13 @@
 {% extends "base_generic.html" %}
 {% block content %}
+
+<hr>
+
 <div class="main_reg_cont">
 <div class="style reg_cont">
 <form method="post">
 {% csrf_token %}
-<h2>Регистрация</h2> <!-- Добавь класс с дизайном -->
+<h2 class="letters_sb">Регистрация</h2> <!-- Добавь класс с дизайном -->
 <table>
 
 <tr>
@@ -28,10 +31,10 @@
 </tr>
 </table>
 
-<input type="submit" value="Регистрация" />
+<input class="testbutton" type="submit" value="Регистрация" />
 </form>
 
-<p><a href="{% url 'login' %}">Уже есть аккаунт?</a></p>
+<p class="k"><a class="name" href="{% url 'login' %}">Уже есть аккаунт?</a></p>
 </div>
 </div>
 {% endblock %}
