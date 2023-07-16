@@ -10,8 +10,8 @@
 <form method="post" action="{% url 'questionary' %}">
     <div class="style">
 {% csrf_token %}
-    <h2 class="h2_questionary">Часть {{ form.numb }}</h2>
-    <h3 class="h3_questionary">{{ form.comment }}</h3>
+    <h2 class="letters_sb">Часть {{ form.numb }}</h2>
+    <h3 class="articles__style">{{ form.comment }}</h3>
     <table class="table_class">
         {% for question in form %}
             <tr>
