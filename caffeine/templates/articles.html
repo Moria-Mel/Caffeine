@@ -11,7 +11,7 @@
 {% for article in articles_list %}
 <div class="style">
     <a class="name" href={{article.id}}><h3 class="body_class">{{article.title}}</h3></a>
-    <p>{{article.summary}}</p>
+    <p class="des__class">{{article.summary}}</p>
     {% for tag in article.tags %}
     <span class="tag">{{tag}}</span>
     {% endfor %}
@@ -21,7 +21,7 @@
 
 
     <div class="style filters_block">
-<h2>Фильтры</h2>
+<h2 class="letters_sb">Фильтры</h2>
 <form method="post" action="{% url 'articles' %}">
 {% csrf_token %}
 <div>
