@@ -76,10 +76,10 @@ sidebar-nav {
     text-align: center;
 }
 .h1_questionary {
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 800;
     font-family: Verdana;
-    text-align:left;
+    text-align: center;
 }
 .h2_questionary {
     font-weight: 700;
@@ -137,6 +137,20 @@ sidebar-nav {
 .input_place {
     margin-bottom: 3%;
     padding: 1% 2%;
+    margin-left: 0;
+}
+
+input {
+    margin-bottom: 3%;
+    padding: 3% 5%;
+    margin-left: 5%;
+}
+
+select {
+    margin-bottom: 3%;
+    padding: 3% 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 /*полоска в статье*/
@@ -299,6 +313,17 @@ hr {
     justify-content: center;
     text-align: center;
     flex-direction: column;
+}
+
+.quest_button {
+    margin-top: 2%;
+}
+
+.quest_cont {
+    max-width: 55vw;
+    padding-left: 5%;
+    padding-right: 5%;
+    min-width: 25vw;
 }
 
 /*naming*/

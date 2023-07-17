@@ -6,9 +6,9 @@
 
 
 <h1 class="h1_questionary">Анкета по употреблению кофеина</h1>
-
+<div class="main_reg_cont">
 <form method="post" action="{% url 'questionary' %}">
-    <div class="style">
+    <div class="style quest_cont">
 {% csrf_token %}
     <h2 class="letters_sb">Часть {{ form.numb }}</h2>
     <h3 class="articles__style">{{ form.comment }}</h3>
@@ -18,20 +18,19 @@
                 {% if form.numb == 3 %}
                     <td style="width: 500px"><b>{{ question.label }}:</b></td>
                 {% else %}
-                    <td><b>{{ question.label }}:</b></td>
+                    <td><b>{{ question.label }}</b></td>
                 {% endif %}
               <td>{{ question }}</td>
             </tr>
         {% endfor %}
     </table>
-    </div>
     <div class="button_field">
         {% if back %}
-        <input name="back" class="testbutton" type="submit" value="Назад" />
+        <input name="back" class="testbutton quest_button" type="submit" value="Назад" />
         {% endif %}
-        <input name="next" class="testbutton" type="submit" value="Дальше!" />
-    </div>
+        <input name="next" class="testbutton quest_button" type="submit" value="Дальше!" />
+    </div>    </div>
 
 </form>
-
+  </div>
 {% endblock %}
