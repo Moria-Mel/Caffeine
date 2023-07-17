@@ -5,36 +5,32 @@
 
 <div class="main_reg_cont">
 <div class="style reg_cont">
+    <div class="small_reg_cont">
+
 <form method="post">
 {% csrf_token %}
-<h2 class="letters_sb">Регистрация</h2> <!-- Добавь класс с дизайном -->
-<table>
+<h2 class="letters_sb">Регистрация</h2> <!-- Добавь класс с дизайном --> <br>
 
-<tr>
-  <td><b class="body_class">Имя пользователя:</b></td>
-  <td>{{ form.username }}</td>
-</tr>
 
-<tr>
-  <td><b class="body_class">Электронная почта:</b></td>
-  <td>{{ form.email }}</td>
-</tr>
+  <input type="text" name="username" maxlength="40" required="" id="id_username" placeholder="Логин" class="input_place">
+  <!--{{ form.username }}--> <br>
 
-<tr>
-  <td><b class="body_class">Пароль:</b></td>
-  <td>{{ form.password }}</td>
-</tr>
 
-<tr>
-  <td><b class="body_class">Пароль ещё раз:</b></td>
-  <td>{{ form.password2 }}</td>
-</tr>
-</table>
+  <input type="email" name="email" maxlength="254" required="" id="id_email" placeholder="Электронная почта" class="input_place">
+  <!--{{ form.email }}--> <br>
+
+
+  <input type="password" name="password" required="" id="id_password" placeholder="Пароль" class="input_place">
+  <!--{{ form.password }}--> <br>
+
+
+  <input type="password" name="password2" required="" id="id_password2" placeholder="Повтор пароля" class="input_place">
+  <!--{{ form.password2 }}--> <br>
 
 <input class="testbutton" type="submit" value="Регистрация" />
 </form>
 
 <p class="k"><a class="name" href="{% url 'login' %}">Уже есть аккаунт?</a></p>
 </div>
-</div>
+</div> </div>
 {% endblock %}

@@ -4,7 +4,7 @@
 <hr>
 
 <div class="main_reg_cont">
-<div class="style reg_cont">
+<div class="style reg_cont log_cont">
   <div class="small_reg_cont">
   <h2 class="letters_sb">Вход</h2>
 {% if form.errors %}
@@ -18,11 +18,11 @@
 
   <!-- <b class="body_class">Имя пользователя:</b> -->
   <!-- {{ form.username }} -->
-  <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="40" required="" id="id_username" placeholder="Логин">
+  <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="40" required="" id="id_username" placeholder="Логин" class="input_place">
   <br>
   <!-- <b class="body_class">Пароль:</b> -->
   <!-- {{ form.password }} -->
-  <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Пароль">
+  <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Пароль" class="input_place">
 
   <br>
 <input class="testbutton" type="submit" value="Войти" />

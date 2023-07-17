@@ -134,6 +134,11 @@ sidebar-nav {
     line-height: 30px;
 }
 
+.input_place {
+    margin-bottom: 3%;
+    padding: 1% 2%;
+}
+
 /*полоска в статье*/
 hr {
     margin: 20px 0;
@@ -269,11 +274,16 @@ hr {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    width: 40%;
-    height: 60%;
+    width: 25%;
+    height: 70%;
     margin-top: auto;
     margin-bottom: auto;
 
+}
+
+.log_cont {
+    width: 25%;
+    height: 50%;
 }
 
 .main_reg_cont {
