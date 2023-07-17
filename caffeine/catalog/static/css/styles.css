@@ -385,3 +385,12 @@ hr {
     color: #4a4a4a;
 }
 
+.tag__class {
+    font-weight: bold;
+    font: sans-serif;
+    font-size: 110%;
+    line-height: 180%;
+    text-align: justify;
+    list-style-type: none;
+    color: #333333;
+}
