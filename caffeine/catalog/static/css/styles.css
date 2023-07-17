@@ -145,6 +145,11 @@ hr {
 	margin-right: -1%;
 }
 
+.extra_hr {
+    margin-left: -2%;
+	margin-right: -2%;
+}
+
 .articles_block {
     width: 70%;
 }
